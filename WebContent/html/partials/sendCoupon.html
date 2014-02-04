@@ -1,0 +1,31 @@
+<div class="well">
+	<!-- Content Secton -->
+	<div>
+		<legend>Select a customer or enter the email address</legend>
+<!-- 		<form class="form-horizontal"> -->
+
+			<div class="control-group">
+				<div class="input-prepend">
+					<a class=" btn btn-large" href="#"><i class="icon-user"></i></a> 
+					<input type="text" autocomplete="off"
+						class="input-large" ng-model="contactName"  placeholder="select customer" style="height: 35px; font-size: 20px;" typeahead="customer for customer in customers | filter:$viewValue | limitTo:8"/>
+				</div>
+				OR
+				<div class="input-prepend">
+				<a class="btn btn-large" href="#"><i
+					class="icon-envelope"></i></a> <input class="input-xlarge"
+					ng-model="emailId" type="text" placeholder="email"
+					style="height: 35px; font-size: 20px;">
+	
+				</div>
+			</div>
+				
+			<div class="form">
+				<div ng-include="'partials/BlueTemplate.html'"></div><br><br>
+				<div>
+					<a class="btn btn-info btn-large" href="#" ng-click="sendEmail()">Print this campaign</a>
+					<a class="btn btn-info btn-large" href="#" ng-click="sendEmail()" class="pull-right">Send Email</a>
+				</div>
+			</div>
+	</div>
+</div>

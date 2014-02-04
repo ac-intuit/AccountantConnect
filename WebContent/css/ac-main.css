@@ -1,0 +1,235 @@
+.navbar12  { color : white; font: bold;font-family: Garamond;font-size: 50;}
+.navbar {height: 70px;}
+.jumbotron
+{
+background-image:url('../img/notebook.png');
+background-repeat:repeat;
+height: 600px;
+}
+.btn-primary {
+  color: #ffffff;
+  background-color: #fa8600;
+  border-color: #e07b04;
+  text-transform: uppercase;
+}
+
+body{	
+	-webkit-font-smoothing: antialiased;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #d76d00;
+  border-color: #4dbdef;
+}
+.btn-default {
+  color: #333333;
+  #background-color: #f3f0f0;
+  #border-color: #adadad;
+  background-color: #f1f6b6;
+  border-color: #5f6815;
+  font-family:'Roboto', sans-serif;
+}
+
+.btn-xtragreen-default {
+  background-color: #d0de37;
+  border-color: #5f6815;
+  font-family:'Roboto', sans-serif;
+}
+
+.container_inproduct {
+  padding-right: 1px;
+  padding-left: 1px;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 50px;
+}
+
+/*
+ * Side navigation
+ *
+ * Scrollspy and affixed enhanced navigation to highlight sections and secondary
+ * sections of docs content.
+ */
+
+/* By default it's not affixed in mobile views, so undo that */
+.bs-sidebar.affix {
+  position: static;
+}
+
+/* First level of nav */
+.bs-sidenav {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #F8F8F8;
+  border-radius: 25px;
+}
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
+  display: block;
+  color: #716b7a;
+  padding: 5px 20px;
+}
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #e5e3e9;
+  border-right: 1px solid #dbd8e0;
+}
+.bs-sidebar .nav > .active > a,
+.bs-sidebar .nav > .active:hover > a,
+.bs-sidebar .nav > .active:focus > a {
+  font-weight: bold;
+  color: #563d7c;
+  background-color: transparent;
+  border-right: 1px solid #563d7c;
+}
+
+/* Nav: second level (shown on .active) */
+.bs-sidebar .nav .nav {
+  display: none; /* Hide by default, but at >768px, show it */
+  margin-bottom: 8px;
+}
+.bs-sidebar .nav .nav > li > a {
+  padding-top:    3px;
+  padding-bottom: 3px;
+  padding-left: 30px;
+  font-size: 90%;
+}
+
+/* Show and affix the side nav when space allows it */
+@media (min-width: 992px) {
+  .bs-sidebar .nav > .active > ul {
+    display: block;
+  }
+  /* Widen the fixed sidebar */
+  .bs-sidebar.affix,
+  .bs-sidebar.affix-bottom {
+    width: 213px;
+  }
+  .bs-sidebar.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+    top: 80px;
+  }
+  .bs-sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .bs-sidebar.affix-bottom .bs-sidenav,
+  .bs-sidebar.affix .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1200px) {
+  /* Widen the fixed sidebar again */
+  .bs-sidebar.affix-bottom,
+  .bs-sidebar.affix {
+    width: 263px;
+  }
+}
+
+.nav-header{
+  font-size:17px;
+  color:#999999;
+  font-weight: 500;
+}
+
+.control-label{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;;
+	font-size:17px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: #5988cf;
+    border-color: #476DA6;
+}
+
+.btn-file:hover,
+.btn-file:focus,
+.btn-file:active,
+.btn-file.active,
+.open .dropdown-toggle.btn-file {
+  color: #ffffff;	
+  background-color: #5988cf;
+  border-color: #476DA6;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+.btn-form {
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+    background-color: #5988cf;
+    border-color: #476DA6;
+}
+
+.btn-form:hover,
+.btn-form:focus,
+.btn-form:active,
+.btn-form.active,
+.open .dropdown-toggle.btn-form {
+  color: #ffffff;	
+  background-color: #476DA6;
+  border-color: #476DA6;
+}
+
+.table-header{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size:17px;
+	color: #bebbbb;
+}
+
+.table-body{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;;
+	font-size:17px;
+}
+.thumbnail {
+	#background-color: #f8f8f8;
+    #border: 1px;    
+	#width: 250px;
+	#height: 300px;
+}
+
+.small-img-container img{
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.navbar-links{
+	font-family: 'Alegreya Sans SC', sans-serif;
+	color:#FFFFFF;
+	font-size:20px;
+}
+
+.small-img-container{
+	width: 250px;
+	height: 250px;
+}
