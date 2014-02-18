@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+    <link rel="shortcut icon" href="../img/main_icon.png">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
 
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  
@@ -21,6 +21,7 @@
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="../css/ac-main.css" rel="stylesheet">
+    <link href="../css/ac-icon-font.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
@@ -48,14 +49,14 @@
             <span class="icon-bar"></span>
           </button>
           <br>
-          <a class="brand " href="/">
+          <a class="brand " href="../mainpage.html">
             <img src="../img/branding.png" alt="AccountantConnect">
           </a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="navbar-links nav navbar-nav navbar-right">              
                <li>
-                 <a class="navbar-links">Contact Us</a>
+                 <a href="mailto:manas@accountantconnect.in" class="navbar-links">Contact Us</a>
                </li>
                 
             </ul>
@@ -73,23 +74,29 @@
        </div>
       </div>
     </div>
+    
+    <div style="height: 250px;background-color: #f2f7fa;border-bottom: 1px #d9dee1 solid;" class="jumbotron">
+       <div class="container" style="text-align:center"> 
+          <div class="row">                             
+            <div style="padding: 80px;color:#2a6999;" class="col-md-1"><span style="font-size: 80px;color: #759AB9" class="pull-left icon-help"></span></div>
+            <div style="padding-top: 100px;color:#2a6999;padding-left: 40px;text-align: left;" class="col-md-10 h2"> HOW DOES IT WORK? HOW WILL IT HELP ME?</div>
+          </div>
+       </div>
+    </div>
 
-    <div style="height: 1500px;margin-top: 100px" class="faq-container container">
-         <div style="height: 100px;background-color: #ffffff;">
-            <div style="padding: 30px;margin: 20px;padding-left: 200px;color:#2a6999;" class="h3">HOW DOES IT WORK? HOW WILL IT HELP ME?</div>
-         </div>
-         
-         
+    <div style="height: 1500px;" class="faq-container container">
+               
          <!-- START: FAQ TextBlock Row -->
          <div style="height: 300px;" class="radial-gradient row">
             <div class="faq-textblocks col-md-6">
-               <div style="color: #348eda;padding-bottom: 10px;" class="faq-textblocks-header">Accountant & Business Collaboration platform</div>
-               <div class="h5">AccountantConnect is a platform, where the businesses and accountants can collaborate. Our vision is to help Businesses with their accounting needs and help Accountants
+               <div style="color: #18A8B4;padding-bottom: 10px;" class="faq-textblocks-header"><span class="logo-first-part">accountant</span><span class="logo-second-part">connect</span> is a Business & Accountant Collaboration platform</div>
+               <div class="h5"><span class="logo-first-part">accountant</span><span class="logo-second-part">connect</span> is a platform, where the businesses and accountants can collaborate. Our vision is to help Businesses with their accounting needs and help Accountants
                get more clients to grow their practice.</div>
             </div>   
          
             <div class="col-md-4">
-                   
+                <!-- <div class="general-medium-clip-image-div"><img class="general-clip-image" src="../img/collaboration.png"></img></div> -->
+                <span class="accountant_faq_page-imageblock pull-right icon-collaboration_landing-acFaq"></span>   
             </div>           
         </div>
          <!-- END: FAQ TextBlock Row -->
@@ -98,11 +105,11 @@
          <!-- START: FAQ TextBlock Row -->
          <div style="height: 250px;" class="radial-gradient row">
            <div class="col-md-4">
-                   
+               <span class="accountant_faq_page-imageblock pull-right icon-create_profile_landing"></span>       
            </div>
            <div class="pull-right faq-textblocks col-md-6">
                <div style="padding-bottom: 10px;color: #50bf82;" class="faq-textblocks-header">Step 1. Create your profile</div>
-               <div class="h5">Start by creating your profile on AccountantConnect platform.<br> You can highlight your area of expertize, upload your photograph, share your customer testimonials and a lot more.  </div>
+               <div class="h5">Start by creating your profile on <span class="logo-first-part">accountant</span><span class="logo-second-part">connect</span> platform.<br> You can highlight your area of expertize, upload your photograph, share your customer testimonials and a lot more.  </div>
            </div>
         </div>
          <!-- END: FAQ TextBlock Row -->
@@ -116,7 +123,7 @@
               can help the businesses with their queries and get better visibility. Businesses may contact you directly as well.</div>      
            </div>
            <div class="col-md-4">
-          
+              <span class="accountant_faq_page-imageblock pull-right icon-find_accountant_acFaq"></span>
            </div>
         </div>
          <!-- END: FAQ TextBlock Row -->
@@ -124,10 +131,10 @@
          <!-- START: FAQ TextBlock Row -->
          <div style="height: 250px;" class="radial-gradient row">
            <div class="col-md-4">
-                   
+               <span class="accountant_faq_page-imageblock pull-right icon-share_articles_acFaq"></span>    
            </div>
            <div class="pull-right faq-textblocks col-md-6">
-               <div style="padding-bottom: 10px;color: #50bf82;" class="faq-textblocks-header">Step 3. Share informative articles & answer queries.</div>
+               <div style="padding-bottom: 10px;color: #50bf82;" class="faq-textblocks-header">Step 3. Post informative articles & answer queries.</div>
                <div class="h5">Post articles around the changes to the accounting regulations and help businesses with their queries. This will give 
                you better visibility among the businesses on our platform. We will always be there to help you with your articles.</div>
            </div>
@@ -137,15 +144,20 @@
         <!-- START: FAQ TextBlock Row -->        
         <div style="height: 250px;" class="radial-gradient row">
            <div class="faq-textblocks  col-md-6">
-               <div style="padding-bottom: 10px;color: #348eda;" class="faq-textblocks-header">And that will help you grow your practice!</div>
-               <div class="h5">The core vision of AccountantConnect is to help accountants grow their practice while helping businesses with their critical accounting needs.</div>      
+               <div style="padding-bottom: 10px;color: #348eda;" class="faq-textblocks-header">That can help you grow your practice!</div>
+               <div class="h5">The core vision of <span class="logo-first-part">accountant</span><span class="logo-second-part">connect</span> is to help accountants grow their practice while helping businesses with their critical accounting needs.</div>      
            </div>
            <div class="col-md-4">
-          
+              <span style="font-size:120px;" class="accountant_faq_page-imageblock pull-right icon-growth_acFaq"></span>
            </div>
         </div>
          <!-- END: FAQ TextBlock Row -->
-         
+        
+
+        <div style="height: 100px;text-align:center" class="row">
+          <a id="acFaqPageJoinAccountantConnectButton" class="btn-lg btn-primary btn" role="button">Join the network of Accountants now! &raquo;</a>
+        </div>
+
 
     </div> <!-- /container -->
    
