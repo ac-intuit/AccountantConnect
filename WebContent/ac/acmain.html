@@ -26,6 +26,7 @@
     <link href="../css/ac-icon-font.css" rel="stylesheet">
     
     <script src="../js/angular.1.0.7min.js"></script>
+    <script src="../js/ac-signup.js"></script>
     <script src="../js/jquery-2.0.3.min.js"></script>
     <script src="../js/SignUpController.js"></script>
     <script src="../js/ui-bootstrap-tpls-0.5.0.min.js"></script>
@@ -50,7 +51,12 @@
     });
 
 	$("#accountantRegistrationButton").click(function() {
-        $("#accountantRegistrationButton").addClass("disabled");;
+        if(!validateFieldsOnSignUpForm()){
+        	   return false;
+        }
+
+        $("#accountantRegistrationButton").addClass("disabled");
+        
         //$("#pleaseWaitButton").show();
         accountantName = $("#accountant_name").val();
         accountantEmail = $("#accountant_email").val();
@@ -168,8 +174,8 @@
 									class="input-lg form-control" type="email" id="accountant_email"
 									placeholder="Email" ng-model="accountant.accountantmail"
 									name="accountantEmail" required>
-								<h6 id="accountantEmailNoDataErr" style="color:red;display: none;">Please enter your email.</h6>	
-								<h6 style="color:red;display: none"> Please enter a valid email </h6>
+								<h6 id="accountantEmailNoDataErr" style="font-size:14px;color:red;display: none;">Please enter your email.</h6>	
+								<h6 id="accountantEmailInvalidFormat" style="font-size:14px;color:red;display: none"> Please enter a valid email </h6>
 							</div>
 						</div>
 						<div class="form-group">
