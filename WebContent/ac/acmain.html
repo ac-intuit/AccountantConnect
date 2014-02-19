@@ -46,11 +46,15 @@
 
 <script>
 	$(document).ready(function() {		
+		$("#accountant_email").focus();
+		$("#infoTextMsg").show();
     $("#landingpageJoinAccountantConnectButton").click(function() {
-       $("#accountant_email").focus();
+       
+      
     });
 
 	$("#accountantRegistrationButton").click(function() {
+		 
         if(!validateFieldsOnSignUpForm()){
         	   return false;
         }
@@ -105,7 +109,24 @@
                  <a href="acfaq.html" class="navbar-links">How will it help me?</a>
                </li>           
                <li>
-                 <a href="mailto:manas@accountantconnect.in" class="navbar-links">Contact Us</a>
+                 <a class="navbar-links" onmouseover="document.getElementById('accountchooser-tooltip').style.display = 'block';"> Contact Us</a>                 
+                  
+<div id="accountchooser-tooltip" class="jfk-tooltip accountchooser-tooltip" style="display:none;">
+     <div id="content" class="jfk-tooltip-content">
+         <h4>
+             Welcome to AccountantConnect!
+         </h4>
+         <p> 
+             Maximixe the opportunity . Show your ability . One stop to connect with all small business
+             <a href="http://accountantconnect.in">Click here </a>
+         </p>
+     </div>
+     <div class="jfk-tooltip-closebtn" id="accountchooser-tooltip-closebtn" aria-label="Close" role="button" tabindex="0">
+  </div>
+     <div class="jfk-tooltip-arrow jfk-tooltip-arrowleft">
+  <div class="jfk-tooltip-arrowimplbefore"></div>
+  <div class="jfk-tooltip-arrowimplafter"></div>
+  </div>
                </li>               
                
             </ul>
@@ -174,8 +195,9 @@
 									class="input-lg form-control" type="email" id="accountant_email"
 									placeholder="Email" ng-model="accountant.accountantmail"
 									name="accountantEmail" required>
+								<h6 id="infoTextMsg" style="font-size:14px;color:green;display:none;">Information will be sent to this email.</h6> 	
 								<h6 id="accountantEmailNoDataErr" style="font-size:14px;color:red;display: none;">Please enter your email.</h6>	
-								<h6 id="accountantEmailInvalidFormat" style="font-size:14px;color:red;display: none"> Please enter a valid email </h6>
+								<h6 id="accountantEmailInvalidFormat" style="font-size:14px;color:red;display: none"> Please enter a valid email. </h6>
 							</div>
 						</div>
 						<div class="form-group">
@@ -185,6 +207,7 @@
 									class="input-lg form-control" type="text" id="accountant_name"
 									placeholder="Full Name" ng-model="accountant.accountantName"
 									name="accountantName" required>
+									<h6 id="accountantNameNoDataErr" style="font-size:14px;color:red;display: none;">Please enter your email.</h6>	
 							</div>
 						</div>
 						<div class="form-group">
