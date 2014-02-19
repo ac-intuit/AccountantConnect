@@ -1,9 +1,6 @@
 Connect to the ubuntu AWS instance.
 ssh -i ~/Dropbox/amazonkey/accountantconnectkey.pem 54.213.167.55 -l ubuntu
 
-Command to copy the binary to the AWS instance.
-scp -i ~/Dropbox/amazonkey/accountantconnectkey.pem /Users/mpanda/work/export/AccountantConnect.war ubuntu@54.213.167.55:
-
 Installing mysql and tomcat7
 sudo apt-get install mysql-server tomcat7
 
@@ -27,3 +24,24 @@ sudo /sbin/iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port
 
 Include the proxyPort attribute in your HTTP connector config in server.xml:
 <Connector port="8080" proxyPort="80" .../>
+
+Command to copy the binary to the AWS instance.
+scp -i ~/Dropbox/amazonkey/accountantconnectkey.pem /Users/mpanda/work/export/AccountantConnect.war ubuntu@54.213.167.55:
+
+To deploy, copy the deploy file from the root to the AWS using the above command.
+Change permission - chmod +x ./deploy
+Then run
+./deploy
+
+
+GMAIL ID
+ac.intuit42@gmail.com pwd - acintuit42
+
+github
+ac-intuit pwd - acintuit42
+
+amazon AWS
+ac.intuit42@gmail.com pwd - acintuit
+
+server setup in local
+/Users/mpanda/work/proj/Servers/apache-tomcat-7.0.50

@@ -18,7 +18,7 @@ public class AccountantController {
     @Autowired
     EditAccountantService editAccountantService;
     
-    @RequestMapping(value="/createAccountantWithNameAndEmail", method = RequestMethod.POST)
+    @RequestMapping(value="/createAccountantWithMinParams")
     @ResponseBody
     public EditAccountantResponse addAccountantWithMinParams(HttpServletRequest req){
     	String name = req.getParameter("accountant_name");

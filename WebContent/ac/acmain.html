@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html ng-app="AccountantConnect">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../img/main_icon.png">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'>
+    
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+   
+    
+    <title> Create accountant profile on the web, Free Accountant directory, Free accountant listing - AccountantConnect </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="../css/ac-main.css" rel="stylesheet">
+    <link href="../css/ac-icon-font.css" rel="stylesheet">
+    
+    <script src="../js/angular.1.0.7min.js"></script>
+    <script src="../js/jquery-2.0.3.min.js"></script>
+    <script src="../js/SignUpController.js"></script>
+    <script src="../js/ui-bootstrap-tpls-0.5.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-resource.min.js"></script>
+    
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+<script>
+	$(document).ready(function() {		
+    $("#landingpageJoinAccountantConnectButton").click(function() {
+       $("#accountant_email").focus();
+    });
+
+	$("#accountantRegistrationButton").click(function() {
+        $("#accountantRegistrationButton").addClass("disabled");;
+        //$("#pleaseWaitButton").show();
+        accountantName = $("#accountant_name").val();
+        accountantEmail = $("#accountant_email").val();
+	    $.post("../api/accountant/createAccountantWithMinParams",
+        {
+            accountant_name:accountantName,
+            accountant_email:accountantEmail 
+        },
+        function(data, status) {
+			if(status == "success" && data.success == true){
+                $("#accountantAdditionSuccessDiv").show();
+                $("#accountantAdditionErrorDiv").hide();
+            }else{
+                $("#accountantAdditionSuccessDiv").hide();
+                $("#accountantAdditionErrorDiv").show();
+            }
+			$("#accountantRegistrationButton").removeClass("disabled");;
+		});
+	});
+});
+</script>
+
+
+</head>
+
+  <body>
+
+    <div ng-controller="SignUpController" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <br>
+          <a class="brand " href="">
+            <img src="../img/branding.png" alt="AccountantConnect">
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">   
+               <li>
+                 <a href="acfaq.html" class="navbar-links">How will it help me?</a>
+               </li>           
+               <li>
+                 <a href="mailto:manas@accountantconnect.in" class="navbar-links">Contact Us</a>
+               </li>               
+               
+            </ul>
+
+        </div>
+       </div>
+      </div>
+    </div>
+
+    <!-- ================== START: Main jumbotron for primary marketing message ========= -->
+    <div id="landingpage_main_area" class="jumbotron">
+      <div class="container" style="text-align:center">                
+        <br>
+        <!-- <div style="color:#fff;" class="h6 pull-right">In private beta <i class="glyphicon glyphicon-question-sign"></i></div><br> -->
+        <!-- <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Open Sans',arial;;font-size:32px;font-weight: 700"><span>Create your "accountant page" on the web. Grow your practice!</span></p>  -->
+        <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Open Sans',arial;;font-size:32px;font-weight: 700"><span>We help accountants grow by making them more visible to businesses.</span></p>
+        <p> <h2 style="text-shadow: 0 1px 1px #000;color:white;letter-spacing:.5px;align:center;font-family: 'Open Sans', sans-serif;font-size:20px;font-weight: 400;">Create your profile page  &#8594;  Participate & Share on our platform  &#8594;  Have more clients reach you.</h2></p>
+        
+        <div style="margin-left:400px;" class="landingpage-main-img"><img style="max-height: 100%;max-width: 100%;" src="../img/landingpage_splash_image.png" alt="Accountant business collaboration"></img></div>
+        <div style="margin-top:270px;"><a id="landingpageJoinAccountantConnectButton" class="btn-lg btn-primary btn" role="button">Join the network now! &raquo;</a></div>
+        </div> 
+        <!-- a class="btn btn-default btn-xtragreen-default " href="#" role="button">EXPLAIN ME FURTHER &raquo;</a></p> -->
+     </div>
+
+     <!-- ================== END: Main jumbotron for primary marketing message ========= -->
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="landingpage-clip-image-fonts-div"><span class="pull-right icon-create_profile_landing"></span></div>
+          <div style="color:#50bf82" class="faq-textblocks-header h3">Create your own profile page.</div>
+          <div style="padding-top: 20px;" class="h5">In your profile you can highlight your area of expertize, share your contact info, share user testimonials, upload your photo and a lot more. </div>
+        </div>
+        <div class="col-md-4">
+           <div class="landingpage-clip-image-fonts-div"><span class="pull-right icon-find_accountant_landing"></span></div>
+          <div style="color:#348eda" class="faq-textblocks-header h3">Prospective clients find you easily.</div>
+          <div style="padding-top: 20px;" class="h5"> More businesses and enterpreneurs are getting tech-savvy. Listing on AccountantConnect will help them find you easily.</div>
+        </div>
+        
+        <div class="col-md-4">
+           <div class="landingpage-clip-image-fonts-div"><span  class="pull-right icon-growth_landing"></span></div>     
+          <div style="color:#50bf82" class="faq-textblocks-header">Grow your practice.</div>
+          <div style="padding-top: 25px;" class="h5">More businesses can reach you, which will help grow your practice.</div>
+        </div>
+      </div>
+      
+    </div> <!-- /container -->
+
+      <br><br>
+      	  <div ng-controller="SignUpController" class="registrationForm-Mini">   
+      	  <div class="container">  
+      	    <div class="row"> 
+      	     <div style="margin-top: 15px;" class="col-md-4"><h5 style="color:#414144;"> It's <span style="font-size: 28px;">FREE</span> and will always remain so!</h5></div>
+      	     <div style="margin-bottom: 15px;" class="col-md-8">
+      	     
+      	     
+      	     <!-- ====================== START: Registration Form ====================== -->
+					<form class="form-vertical" role="form" novalidate>
+						<!-- label class="form-group">Join Free</label> -->
+						<div class="form-group">
+							<div class="col-sm-4">
+								<input
+									style="font-size: 1.1em; font-family: 'Lato', sans-serif;"
+									class="input-lg form-control" type="email" id="accountant_email"
+									placeholder="Email" ng-model="accountant.accountantmail"
+									name="accountantEmail" required>
+								<h6 id="accountantEmailNoDataErr" style="color:red;display: none;">Please enter your email.</h6>	
+								<h6 style="color:red;display: none"> Please enter a valid email </h6>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<input
+									style="font-size: 1.1em; font-family: 'Lato', sans-serif;"
+									class="input-lg form-control" type="text" id="accountant_name"
+									placeholder="Full Name" ng-model="accountant.accountantName"
+									name="accountantName" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4">
+								<a id="accountantRegistrationButton" class="btn-lg btn-primary btn" role="button">REGISTER »</a>
+							</div>
+						</div>
+
+                        <!-- ====================== END: Registration Form ====================== -->
+
+						<!-- =================== START: Error handling for the form ==============-->
+
+						<br><br><br>
+						<div id="accountantAdditionSuccessDiv" class="alert alert-success" style="display: none;">
+							<button type="button" class="close">x</button>
+							Thank you for registering. We will reach out to you soon !
+						</div>
+						<div id="accountantAdditionErrorDiv" class="alert alert-danger" style="display: none;">
+							<button type="button" class="close">x</button>
+							Oops! Something went wrong. Just drop your contact number at contact@accountantconnect.in and we will get back immediately.
+						</div>
+
+						<!-- =================== START: Error handling for the form ==============-->
+
+
+					</form>
+				</div>
+		 </div>
+		 </div>
+      </div>
+   
+         <hr>      
+            
+      <footer>
+   
+      </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
