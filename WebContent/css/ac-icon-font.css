@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'aconnect_icons';
-    src:url('../fonts/aconnect_icons.eot?14sl02');
-    src:url('../fonts/aconnect_icons.eot?#iefix14sl02') format('embedded-opentype'),
-        url('../fonts/aconnect_icons.woff?14sl02') format('woff'),
-        url('../fonts/aconnect_icons.ttf?14sl02') format('truetype'),
-        url('../fonts/aconnect_icons.svg?14sl02#aconnect_icons') format('svg');
+    src:url('../fonts/aconnect_icons.eot?dqa8kt');
+    src:url('../fonts/aconnect_icons.eot?#iefixdqa8kt') format('embedded-opentype'),
+        url('../fonts/aconnect_icons.woff?dqa8kt') format('woff'),
+        url('../fonts/aconnect_icons.ttf?dqa8kt') format('truetype'),
+        url('../fonts/aconnect_icons.svg?dqa8kt#aconnect_icons') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -46,6 +46,9 @@
 }
 .icon-collaboration_landing-acFaq:before {
     content: "\e608";
+}
+.icon-collaboration_acFaq:before {
+    content: "\e609";
 }
 .icon-share_articles_acFaq:before {
     content: "\e602";
