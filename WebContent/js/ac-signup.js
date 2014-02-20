@@ -1,8 +1,5 @@
 function validateFieldsOnSignUpForm(){
    var accountantEmail = $("#accountant_email").val();
-   
-  
-   
    var atpos=accountantEmail.indexOf("@");
    var dotpos=accountantEmail.lastIndexOf(".");
    

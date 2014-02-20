@@ -22,6 +22,7 @@ public class CollectionOfUtilityMethods {
 			firstnameAndLastnameArr[1] = "";
 			return firstnameAndLastnameArr;
 		}else{
+		
 			firstnameAndLastnameArr = new String[2];
 		    firstnameAndLastnameArr[0] = "";
 		    firstnameAndLastnameArr[1] = "";
