@@ -45,9 +45,25 @@
     <![endif]-->
 
 <script>
+
+function getEmailFocus()
+{
+document.getElementById('accountant_email').focus();
+$("#infoEmailTextMsg").show();
+$("#infoNameTextMsg").hide();
+}
+
+function getNameFocus()
+{
+document.getElementById('accountant_name').focus();
+$("#infoEmailTextMsg").hide();
+$("#infoNameTextMsg").show();
+}
+
+ 
+
 	$(document).ready(function() {		
-		$("#accountant_email").focus();
-		$("#infoTextMsg").show();
+		
     $("#landingpageJoinAccountantConnectButton").click(function() {
        
       
@@ -112,17 +128,20 @@
                  <a class="navbar-links" onmouseover="document.getElementById('accountchooser-tooltip').style.display = 'block';"> Contact Us</a>                 
                   
 <div id="accountchooser-tooltip" class="jfk-tooltip accountchooser-tooltip" style="display:none;">
+
      <div id="content" class="jfk-tooltip-content">
-         <h4>
-             Welcome to AccountantConnect!
-         </h4>
-         <p> 
-             Maximixe the opportunity . Show your ability . One stop to connect with all small business
-             <a href="http://accountantconnect.in">Click here </a>
-         </p>
+        
+         
+              <i class='glyphicon glyphicon-log-in' ></i>  kulkarni.karthik@gmail.com<br>
+              <i class='glyphicon glyphicon-earphone'></i> 9902417369<br>
+              
+         
      </div>
-     <div class="jfk-tooltip-closebtn" id="accountchooser-tooltip-closebtn" aria-label="Close" role="button" tabindex="0">
+     <div class="jfk-tooltip-closebtn"  onmouseover="document.getElementById('accountchooser-tooltip').style.display ='none';"    id="accountchooser-tooltip-closebtn" aria-label="Close" role="button" tabindex="0" onclick="window.close()">
+     
+  <div class="gb_N"></div>
   </div>
+  
      <div class="jfk-tooltip-arrow jfk-tooltip-arrowleft">
   <div class="jfk-tooltip-arrowimplbefore"></div>
   <div class="jfk-tooltip-arrowimplafter"></div>
@@ -194,8 +213,8 @@
 									style="font-size: 1.1em; font-family: 'Lato', sans-serif;"
 									class="input-lg form-control" type="email" id="accountant_email"
 									placeholder="Email" ng-model="accountant.accountantmail"
-									name="accountantEmail" required>
-								<h6 id="infoTextMsg" style="font-size:14px;color:green;display:none;">Information will be sent to this email.</h6> 	
+									name="accountantEmail" onfocus="getEmailFocus()">
+								<h6 id="infoEmailTextMsg" style="font-size:14px;color:green;display:none;">Information will be sent to this email.</h6> 	
 								<h6 id="accountantEmailNoDataErr" style="font-size:14px;color:red;display: none;">Please enter your email.</h6>	
 								<h6 id="accountantEmailInvalidFormat" style="font-size:14px;color:red;display: none"> Please enter a valid email. </h6>
 							</div>
@@ -206,8 +225,10 @@
 									style="font-size: 1.1em; font-family: 'Lato', sans-serif;"
 									class="input-lg form-control" type="text" id="accountant_name"
 									placeholder="Full Name" ng-model="accountant.accountantName"
-									name="accountantName" required>
-									<h6 id="accountantNameNoDataErr" style="font-size:14px;color:red;display: none;">Please enter your email.</h6>	
+									name="accountantName" onfocus="getNameFocus()">
+									 
+		 
+									<h6 id="infoNameTextMsg" style="font-size:14px;color:green;display:none;">What do we call you .</h6> 	
 							</div>
 						</div>
 						<div class="form-group">

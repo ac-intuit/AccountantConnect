@@ -1,5 +1,5 @@
 function validateFieldsOnSignUpForm(){
-<<<<<<< HEAD
+ 
    var accountantEmail = $("#accountant_email").val();
    
   
@@ -9,7 +9,7 @@ function validateFieldsOnSignUpForm(){
    
    var pattern = new RegExp("/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/");
    if(atpos<1 || dotpos<atpos+2 || dotpos+2>=accountantEmail.length){
-	   $("#infoTextMsg").hide();
+	   $("#infoEmailTextMsg").hide();
 	   $("#accountantEmailInvalidFormat").show();
 	   $("#accountant_email").focus();
 	   return false;
@@ -30,12 +30,4 @@ function validateFieldsOnSignUpForm(){
  
 	   
   
-=======
-   var accountantName = $("#accountant_name").val();
-   if(accountantName == ""){
-	   $("#accountantEmailNoDataErr").show();
-	   return false;
-   }
-   return true;
-}
->>>>>>> f855a2092b4e025ca298ff662374eedacfcc4bca
+ 
