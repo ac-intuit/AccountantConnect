@@ -1,4 +1,5 @@
 function validateFieldsOnSignUpForm(){
+<<<<<<< HEAD
    var accountantEmail = $("#accountant_email").val();
    
   
@@ -29,3 +30,12 @@ function validateFieldsOnSignUpForm(){
  
 	   
   
+=======
+   var accountantName = $("#accountant_name").val();
+   if(accountantName == ""){
+	   $("#accountantEmailNoDataErr").show();
+	   return false;
+   }
+   return true;
+}
+>>>>>>> f855a2092b4e025ca298ff662374eedacfcc4bca
