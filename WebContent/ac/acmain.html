@@ -46,27 +46,22 @@
 
 <script>
 
-function getEmailFocus()
-{
-document.getElementById('accountant_email').focus();
-$("#infoEmailTextMsg").show();
-$("#infoNameTextMsg").hide();
-}
-
-function getNameFocus()
-{
-document.getElementById('accountant_name').focus();
-$("#infoEmailTextMsg").hide();
-$("#infoNameTextMsg").show();
-}
-
- 
-
-	$(document).ready(function() {		
+$(document).ready(function() {		
 		
     $("#landingpageJoinAccountantConnectButton").click(function() {
-       
-      
+       $("#accountant_email").focus();      
+    });
+    $("#accountant_email").focus(function(){
+        	$("#infoEmailTextMsg").show();
+    });
+    $("#accountant_name").focus(function(){
+        $("#infoNameTextMsg").show();
+    });
+    $("#accountant_email").blur(function(){
+        	$("#infoEmailTextMsg").hide();
+    });
+    $("#accountant_name").blur(function(){
+        $("#infoNameTextMsg").hide();
     });
 
 	$("#accountantRegistrationButton").click(function() {
@@ -125,27 +120,15 @@ $("#infoNameTextMsg").show();
                  <a href="acfaq.html" class="navbar-links">How will it help me?</a>
                </li>           
                <li>
-                 <a class="navbar-links" onmouseover="document.getElementById('accountchooser-tooltip').style.display = 'block';"> Contact Us</a>                 
+                 <a href="#" class="navbar-links" onclick="$('#accountchooser-tooltip').show();"> Contact Us</a>                 
                   
-<div id="accountchooser-tooltip" class="jfk-tooltip accountchooser-tooltip" style="display:none;">
-
-     <div id="content" class="jfk-tooltip-content">
-        
-         
-              <i class='glyphicon glyphicon-log-in' ></i>  kulkarni.karthik@gmail.com<br>
-              <i class='glyphicon glyphicon-earphone'></i> 9902417369<br>
-              
-         
-     </div>
-     <div class="jfk-tooltip-closebtn"  onmouseover="document.getElementById('accountchooser-tooltip').style.display ='none';"    id="accountchooser-tooltip-closebtn" aria-label="Close" role="button" tabindex="0" onclick="window.close()">
-     
-  <div class="gb_N"></div>
-  </div>
-  
-     <div class="jfk-tooltip-arrow jfk-tooltip-arrowleft">
-  <div class="jfk-tooltip-arrowimplbefore"></div>
-  <div class="jfk-tooltip-arrowimplafter"></div>
-  </div>
+                <div id="accountchooser-tooltip" class="jfk-tooltip accountchooser-tooltip" style="display:none;" onblur="$('#accountchooser-tooltip').hide()">
+                   <div onclick="$('#accountchooser-tooltip').hide();" class="pull-right"><a href="#">X</a></div>
+                   <div id="content" class="jfk-tooltip-content">  
+                        <i class='glyphicon glyphicon-envelope' ></i> <span>contact@accountantconnect.in</span><br>
+                        <i class='glyphicon glyphicon-earphone'></i> <span>+91 80 3076 7297</span>
+                    </div>
+                </div>
                </li>               
                
             </ul>
@@ -207,29 +190,29 @@ $("#infoNameTextMsg").show();
       	     <!-- ====================== START: Registration Form ====================== -->
 					<form class="form-vertical" role="form" novalidate>
 						<!-- label class="form-group">Join Free</label> -->
-						<div class="form-group">
+						<div id="accountant_email_div" class="form-group">
 							<div class="col-sm-4">
 								<input
 									style="font-size: 1.1em; font-family: 'Open Sans', sans-serif;"
 									class="input-lg form-control" type="email" id="accountant_email"
 									placeholder="Email" ng-model="accountant.accountantmail"
 
-									name="accountantEmail" onfocus="getEmailFocus()">
-								<h6 id="infoEmailTextMsg" style="font-size:14px;color:green;display:none;">Information will be sent to this email.</h6> 	
-								<h6 id="accountantEmailNoDataErr" style="font-size:14px;color:red;display: none;">Please enter your email.</h6>	
-								<h6 id="accountantEmailInvalidFormat" style="font-size:14px;color:red;display: none"> Please enter a valid email. </h6>
+									name="accountantEmail">
+								<h6 id="infoEmailTextMsg" style="color:green;display:none;">We will send your account info to this email.</h6> 	
+								<h6 id="accountantEmailNoDataErr" style="color:red;display: none;">Please enter your email.</h6>	
+								<h6 id="accountantEmailInvalidFormat" style="color:red;display: none"> Please enter a valid email. </h6>
 							</div>
 						</div>
-						<div class="form-group">
+						<div id="accountant_name_div" class="form-group">
 							<div class="col-sm-4">
 								<input
 									style="font-size: 1.1em; font-family: 'Open Sans', sans-serif;"
 									class="input-lg form-control" type="text" id="accountant_name"
 									placeholder="Full Name" ng-model="accountant.accountantName"
-									name="accountantName" onfocus="getNameFocus()">
+									name="accountantName">
 									 
 		 
-									<h6 id="infoNameTextMsg" style="font-size:14px;color:green;display:none;">What do we call you .</h6> 	
+									<h6 id="infoNameTextMsg" style="color:green;display:none;">What should we call you?</h6> 	
 							</div>
 						</div>
 						<div class="form-group">

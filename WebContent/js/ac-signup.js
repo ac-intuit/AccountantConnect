@@ -1,9 +1,7 @@
 function validateFieldsOnSignUpForm(){
 
 	var accountantEmail = $("#accountant_email").val();
-
-
-
+	
 	var atpos=accountantEmail.indexOf("@");
 	var dotpos=accountantEmail.lastIndexOf(".");
 
@@ -12,11 +10,13 @@ function validateFieldsOnSignUpForm(){
 		$("#infoEmailTextMsg").hide();
 		$("#accountantEmailInvalidFormat").show();
 		$("#accountant_email").focus();
+		$("#accountant_email_div").addClass("has-error");
 		return false;
 	}
 
 	else {
 		$("#accountantEmailInvalidFormat").hide();
+		$("#accountant_email_div").removeClass("has-error");
 		return true;
 	}
 
