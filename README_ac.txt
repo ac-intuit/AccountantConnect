@@ -27,3 +27,13 @@ sudo /sbin/iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port
 
 Include the proxyPort attribute in your HTTP connector config in server.xml:
 <Connector port="8080" proxyPort="80" .../>
+
+################################## UserNames & Passwords #########################
+
+Github - ac-intuit/acintuit42
+Amazon AWS - ac.intuit42@gmail.com/acintuit
+Gmail - ac.intuit42/acintuit
+Gmail - manas@accountantconnect.in/acintuit42
+Gmail - contact@accountantconnect.in/acintuit42`
+
+################################## END UserNames & Passwords #########################
