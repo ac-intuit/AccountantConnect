@@ -49,6 +49,14 @@
    	  <bean id="editAccountantService" class="in.accountantconnect.service.accountant.EditAccountantService">
    	        <property name="accountantDao" ref="accountantDao"/>
    	  </bean>
+   	  
+   	  <bean name="trackingDao" class="in.accountantconnect.dao.TrackingDao">
+        <property name="sessionFactory" ref="AccountantConnectSessionFactory" />
+      </bean> 
+      
+      <bean id="trackingService" class="in.accountantconnect.service.tracking.TrackingService">
+            <property name="trackingDao" ref="trackingDao"/>
+      </bean>
         
       <!--Configures view for returning JSON to the client -->  
   <!--     <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">  

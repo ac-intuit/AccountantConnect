@@ -8,15 +8,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../img/main_icon.png">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    
+    <!-- <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'> 
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  
-    <!--<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'> -->
-    <!-- <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'> -->
     
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
-   
     
-    <title> Create accountant profile on the web, Free Accountant directory, Free accountant listing - AccountantConnect </title>
+    <title> Create free profile for accountants - AccountantConnect </title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.css" rel="stylesheet">
@@ -24,17 +27,14 @@
     <link href="../css/ac-main.css" rel="stylesheet">
     <link href="../css/ac-icon-font.css" rel="stylesheet">
     
-    <script src="../js/angular.1.0.7min.js"></script>
-    <script src="../js/ac_ga_tracking.js"></script>        
+    <!-- ========= Load JS ======== -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.js"></script>
     <script src="../js/ac-signup.js"></script>
-    <script src="../js/jquery-2.0.3.min.js"></script>
-    <script src="../js/SignUpController.js"></script>
-    <script src="../js/ui-bootstrap-tpls-0.5.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-resource.min.js"></script>
+    <script src="../js/ac-util.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-
+    
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -46,9 +46,18 @@
 
 <script>
 
-$(document).ready(function() {		
-		
+$(document).ready(function() {	
+	//Add custom tracking. Remove them after GA tracking is enabled	
+	setTrackingDetailsInCookieIfNotAlreadySet();
+	feature = getParameterByNameFromURL("feature");
+	if(feature == null || feature == ""){
+	   trackUserActivity("visit_acmainhtml");
+	}else{
+	   trackUserActivity(feature);
+	}
+	
     $("#landingpageJoinAccountantConnectButton").click(function() {
+    	   trackUserActivity("clickButton_joinNetworkLandingPageButton_acmainhtml")
        $("#accountant_email").focus();      
     });
     $("#accountant_email").focus(function(){
@@ -64,8 +73,10 @@ $(document).ready(function() {
         $("#infoNameTextMsg").hide();
     });
 
+    // ============ Click of Register >> button ==========
 	$("#accountantRegistrationButton").click(function() {
 		 
+		trackUserActivity("clickButton_registerAccountant_acmainhtml");
         if(!validateFieldsOnSignUpForm()){
         	   return false;
         }
@@ -91,10 +102,24 @@ $(document).ready(function() {
 			$("#accountantRegistrationButton").removeClass("disabled");;
 		});
 	});
+    // ============ END: Click of Register >> button ==========
 });
 </script>
 
+<script>
+   
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-48262166-1']);
+  _gaq.push(['_trackPageview']);
+  
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-48262166-1', 'accountantconnect.in');
+  ga('send', 'pageview');
+</script>
 </head>
 
   <body>
@@ -110,17 +135,17 @@ $(document).ready(function() {
             <span class="icon-bar"></span>
           </button>
           <br>
-          <a class="brand " href="">
+          <a onclick="trackUserActivity('clickLogo_acLandingPageLogo_acmainhtml')" class="brand " href="">
             <img src="../img/branding.png" alt="AccountantConnect">
           </a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">   
                <li>
-                 <a href="acfaq.html" class="navbar-links">How will it help me?</a>
+                 <a href="acfaq.html" onclick="trackUserActivity('clickLink_howWillItHelpMe_acmainhtml')" class="navbar-links">How will it help me?</a>
                </li>           
                <li>
-                 <a href="#" class="navbar-links" onclick="$('#accountchooser-tooltip').show();"> Contact Us</a>                 
+                 <a href="#" class="navbar-links" onclick="$('#accountchooser-tooltip').show();trackUserActivity('clickLink_contactUs_acmainhtml');"> Contact Us</a>                 
                   
                 <div id="accountchooser-tooltip" class="jfk-tooltip accountchooser-tooltip" style="display:none;" onblur="$('#accountchooser-tooltip').hide()">
                    <div onclick="$('#accountchooser-tooltip').hide();" class="pull-right"><a href="#">X</a></div>
@@ -144,8 +169,8 @@ $(document).ready(function() {
         <br>
         <!-- <div style="color:#fff;" class="h6 pull-right">In private beta <i class="glyphicon glyphicon-question-sign"></i></div><br> -->
         <!-- <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Open Sans',arial;;font-size:32px;font-weight: 700"><span>Create your "accountant page" on the web. Grow your practice!</span></p>  -->
-        <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Montserrat',arial;;font-size:28px;font-weight: 700"><span>We help accountants grow by making them more visible to the clients.</span></p>
-        <p> <h2 style="text-shadow: 0 1px 1px #000;color:white;letter-spacing:.5px;align:center;font-family: 'Open Sans', sans-serif;font-size:20px;font-weight: 400;">Create your profile page  &#8594;  Participate & Share on our platform  &#8594;  Have more clients reach you.</h2></p>
+        <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Montserrat',arial;;font-size:28px;font-weight: 700"><span>We can help accountants grow by making them more visible to the clients.</span></p>
+        <p> <h2 style="text-shadow: 0 1px 1px #000;color:white;letter-spacing:.5px;align:center;font-family: 'Open Sans', sans-serif;font-size:20px;font-weight: 400;">Create your profile  &#8594;  Participate & Share on our platform  &#8594;  Have more clients reach you.</h2></p>
         
         <div style="margin-left:400px;" class="landingpage-main-img"><img style="max-height: 100%;max-width: 100%;" src="../img/landingpage_splash_image.png" alt="Accountant business collaboration"></img></div>
         <div style="margin-top:270px;"><a id="landingpageJoinAccountantConnectButton" class="btn-lg btn-primary btn" role="button">Join the network now! &raquo;</a></div>
@@ -161,7 +186,7 @@ $(document).ready(function() {
       <div class="row">
         <div class="col-md-4">
           <div class="landingpage-clip-image-fonts-div"><span class="pull-right icon-create_profile_landing"></span></div>
-          <div style="color:#50bf82" class="faq-textblocks-header h3">Create your own profile page.</div>
+          <div style="color:#AA8D44" class="faq-textblocks-header h3">Create your own profile page.</div>
           <div style="padding-top: 20px;" class="h5">In your profile you can highlight your area of expertize, share your contact info, share user testimonials, upload your photo and a lot more. </div>
         </div>
         <div class="col-md-4">
@@ -172,7 +197,7 @@ $(document).ready(function() {
         
         <div class="col-md-4">
            <div class="landingpage-clip-image-fonts-div"><span  class="pull-right icon-growth_landing"></span></div>     
-          <div style="color:#50bf82" class="faq-textblocks-header">Grow your practice.</div>
+          <div style="color:#AA8D44" class="faq-textblocks-header">Grow your practice.</div>
           <div style="padding-top: 25px;" class="h5">More businesses can reach you, which will help grow your practice.</div>
         </div>
       </div>
@@ -212,7 +237,7 @@ $(document).ready(function() {
 									name="accountantName">
 									 
 		 
-									<h6 id="infoNameTextMsg" style="color:green;display:none;">What should we call you?</h6> 	
+									<h6 id="infoNameTextMsg" style="color:green;display:none;">Will be displayed on profile.</h6> 	
 							</div>
 						</div>
 						<div class="form-group">
@@ -253,7 +278,5 @@ $(document).ready(function() {
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
   </body>
 </html>
