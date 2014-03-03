@@ -31,7 +31,7 @@ private SessionFactory sessionFactory;
 	public Object readById(int id) throws CommonException{
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Accountant.class);
-			criteria.add(Restrictions.eq("businessid", id));
+			criteria.add(Restrictions.eq("accounantid", id));
 		try{
 			return criteria.uniqueResult();
 		}catch (HibernateException e) {

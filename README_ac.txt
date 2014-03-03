@@ -34,6 +34,8 @@ Github - ac-intuit/acintuit42
 Amazon AWS - ac.intuit42@gmail.com/acintuit
 Gmail - ac.intuit42/acintuit
 Gmail - manas@accountantconnect.in/acintuit42
-Gmail - contact@accountantconnect.in/acintuit42`
+Gmail - contact@accountantconnect.in/acintuit42
+mailChimp - accountantconnect/acintuit42
+Google Analytics - ac.intuit42@gmail.com/acintuit
 
 ################################## END UserNames & Passwords #########################

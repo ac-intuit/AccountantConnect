@@ -21,15 +21,15 @@ public class AccountantController {
     @RequestMapping(value="/createAccountantWithMinParams", method = RequestMethod.POST)
     @ResponseBody
     public EditAccountantResponse addAccountantWithMinParams(HttpServletRequest req){
-    	String name = req.getParameter("accountant_name");
-    	String email = req.getParameter("accountant_email");
-    	String phone = req.getParameter("accountant_phone");
-    	String isHiddenStr = CollectionOfUtilityMethods.getParamValIfNotNullElseGetDefaultVal("isHidden", "0", req);
-    	Integer isHidden = 0;
-    	try{
-    		isHidden = Integer.parseInt(isHiddenStr);
-    	}catch(Exception e){}
+    		String name = req.getParameter("accountant_name");
+    		String email = req.getParameter("accountant_email");
+    		String phone = req.getParameter("accountant_phone");
+    		String isHiddenStr = CollectionOfUtilityMethods.getParamValIfNotNullElseGetDefaultVal("isHidden", "0", req);
+    		Integer isHidden = 0;
+    		try{
+    			isHidden = Integer.parseInt(isHiddenStr);
+    		}catch(Exception e){}
     	
-    	return editAccountantService.createAccountantWithMinimumParams(name, email, phone, isHidden);
+    		return editAccountantService.createAccountantWithMinimumParams(name, email, phone, isHidden);
     }
 }
