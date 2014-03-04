@@ -325,8 +325,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 
 .h6,h6{
 	font-family:'Lato', sans-serif;
-	font-family: 'Lato', sans-serif;
 	font-weight: 400;
+	font-size: 15px;
 	letter-spacing: .75px;
 	line-height: 22px;
 	color: #848588;
@@ -549,4 +549,9 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
     margin: 0px;
     padding: 0px;
     border: 1px solid #D3D3D3;
+}
+ 
+ .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
+background-color: #fa8600;
+border-color: #fa8600;
 }
