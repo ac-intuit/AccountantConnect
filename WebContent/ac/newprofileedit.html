@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="AccountantSection">
+<html ng-app="AccountantProfileSection">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +23,10 @@
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="../css/b-main.css" rel="stylesheet">
+    <link href="../css/signin.css" rel="stylesheet">
     <link href="../css/ac-icon-font.css" rel="stylesheet">
+    <link href="../css/ac-profile.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
     
     <!-- ========= Load JS ======== -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -32,7 +35,7 @@
     <script src="../js/ac-util.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="../js/angular.1.0.7min.js"></script>
-    <script src="../js/AccountantSection.js"></script>
+    <script src="../js/AccountantProfileSection.js"></script>
     <script src="../js/ui-bootstrap-tpls-0.5.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular-resource.min.js"></script>
 
@@ -47,67 +50,6 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
 
-      <script>
-
-        $(document).ready(function() {  
-    //Add custom tracking. Remove them after GA tracking is enabled 
-    setTrackingDetailsInCookieIfNotAlreadySet();
-    feature = getParameterByNameFromURL("feature");
-    if(feature == null || feature == ""){
-     trackUserActivity("visit_acmainhtml");
- }else{
-     trackUserActivity(feature);
- }
-
- $("#landingpageJoinAccountantConnectButton").click(function() {
-     trackUserActivity("clickButton_joinNetworkLandingPageButton_acmainhtml")
-     $("#accountant_email").focus();      
- });
- $("#accountant_email").focus(function(){
-    $("#infoEmailTextMsg").show();
-});
- $("#accountant_name").focus(function(){
-    $("#infoNameTextMsg").show();
-});
- $("#accountant_email").blur(function(){
-    $("#infoEmailTextMsg").hide();
-});
- $("#accountant_name").blur(function(){
-    $("#infoNameTextMsg").hide();
-});
-
-    // ============ Click of Register >> button ==========
-    $("#accountantRegistrationButton").click(function() {
-
-        trackUserActivity("clickButton_registerAccountant_acmainhtml");
-        if(!validateFieldsOnSignUpForm()){
-         return false;
-     }
-
-     $("#accountantRegistrationButton").addClass("disabled");
-
-        //$("#pleaseWaitButton").show();
-        accountantName = $("#accountant_name").val();
-        accountantEmail = $("#accountant_email").val();
-        $.post("../api/accountant/createAccountantWithMinParams",
-        {
-            accountant_name:accountantName,
-            accountant_email:accountantEmail 
-        },
-        function(data, status) {
-            if(status == "success" && data.success == true){
-                $("#accountantAdditionSuccessDiv").show();
-                $("#accountantAdditionErrorDiv").hide();
-            }else{
-                $("#accountantAdditionSuccessDiv").hide();
-                $("#accountantAdditionErrorDiv").show();
-            }
-            $("#accountantRegistrationButton").removeClass("disabled");;
-        });
-    });
-    // ============ END: Click of Register >> button ==========
-});
-</script>
 
 <script>
 
@@ -137,7 +79,7 @@
           </button>
           <br>
           <a onclick="trackUserActivity('clickLogo_acFaqPageLogo_acfaqhtml')" class="brand " href="acmain.html">
-            <img src="../img/branding_white_background.png" alt="AccountantConnect">
+            <img src="../img/small_branding_white_bg.png" alt="AccountantConnect">
           </a>
         </div>
         <div class="navbar-collapse collapse">
@@ -172,59 +114,80 @@
       </div>
     </div>
 
-    <!-- ====================== START: BODY CONTAINER =================== -->
-    <div style="margin-top:30px" class="profile-container container">
+    <div style="padding-left: 0px;margin-left: 0px;margin-top: 0px;" class="" ng-controller="EditProfileSideBarController">
 
-      <div style="text-align:center;padding-bottom: 20px;" class="bg-img row">
-
-
-              <!-- ======= START: Top Step information div ======= -->
-          <div style="float: left; padding-right: 20px;">
-             <div class="pull-left border-bottom HelveticaNeue-h4"> Introduction</div>&nbsp;&nbsp;
-             <span style="font-size: 18px;" class="icon-arrow-right"></span>
+        <!-- START: Top Bar -->
+        <div class="subnav row">
+          <div class="col-md-3">
+          </div>
+          <div class="col-md-6">
+            <div class="subnav-text"> 7 short steps to your great profile!</div>
+          </div>
+          <div class="col-md-2">
+          </div>
+          <div class="pull-right col-md-2">
+            <div style="border-left: 1px solid #1d1d1d;border-right: 1px solid #1d1d1d;" class="subnav-text"><i class='glyphicon glyphicon-eye-open' ></i> &nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;
+                <i class='glyphicon glyphicon-share-alt' ></i>
+            </div>
+          </div>
+          <div class="col-md-1">
           </div>
 
-          <div style="float: left;padding-right: 20px;">
-              <span class="HelveticaNeue-h4">
-                Experience &amp; Expertize</span>&nbsp;&nbsp;
-              <span style="font-size: 18px;" class="icon-arrow-right"></span>
-          </div>
+        </div>
+        <!-- END: Top bar -->
 
-          <div style="float: left;padding-right: 20px;">
-              <span class="HelveticaNeue-h4"> Contact Information</span>
-          </div>
-      </div>
+        <!-- ================== START: Main body content ================= -->
+        <div style="height: 750px;" class="row">
+            <!-- ============= START: Left panel ============= -->
+            <div style="padding-right: 0px;height: 100%;width: 270px;" class="col-md-3">
+              <div>
+                <ul class="nav nav-pills nav-stacked">  
+                  <br>
+                  <li class="nav-header">Introduction</li>
+                  <li ng-repeat="editProfileLeftNav_intro in editProfileLeftNavs_intro" class="{{editProfileLeftNav_intro.class}}" ng-click="editProfileLeftNavs_introClicked($event, $index)">
+                    <a href="{{editProfileLeftNav_intro.link}}">
+                        <i class='glyphicon {{editProfileLeftNav_intro.glyphicon}}' ></i>&nbsp;&nbsp;&nbsp;&nbsp;{{editProfileLeftNav_intro.LinkText}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;<i class='profile-page-icons pull-right glyphicon {{editProfileLeftNav_intro.IsItemFilled}}' ></i>
+                    </a>
+                  </li>
+                  <br><br>
 
-      <!-- ======= END: Top Step information div ======= -->      
+                  <li class="nav-header">Professional Information</li>
+                  
+                  <li ng-repeat="editProfileLeftNav_prof in editProfileLeftNavs_prof" class="{{editProfileLeftNav_prof.class}}" ng-click="editProfileLeftNavs_profClicked($event, $index)">
+                    <a href="{{editProfileLeftNav_prof.link}}">
+                        <i class='glyphicon {{editProfileLeftNav_prof.glyphicon}}' ></i>&nbsp;&nbsp;&nbsp;&nbsp;{{editProfileLeftNav_prof.LinkText}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;<i class='profile-page-icons pull-right glyphicon {{editProfileLeftNav_prof.IsItemFilled}}' ></i>
+                    </a>
+                  </li>
 
-      <div class="bg-img row">
-        
-       <div id="profile_contact" style="padding-bottom:10px;padding-top: 10px;background-image:url('../img/satinweave.png');" class="row">
-         
-         <br>
-         <i class='glyphicon glyphicon-user' ></i>&nbsp;&nbsp;
-         <span class="h4">INTRODUCTION</span>
-        
-       </div>
-       <!-- ========== START: Profile header section ========= -->
-          <div class="col-md-6" style="padding-bottom:20px;padding-top: 10px;background-color: #fff;border-top: 2px solid #A3E4FA">
-          
-          <div ng-view></div>
 
-          </div>
-          <!-- ========== END: Profile header section ========= -->
+                  <li>
+                    <div style="padding: 20px;padding-top: 150px;" class="h8">
+                      Information on these <strong class="profile-page-icons">7 steps</strong> are very important for the businesses, who wish to contact you.
+                    </div> 
+                  </li>                                         
+                 </ul>
+               </div> 
+            </div>
+            <!-- ============= END: Left panel ============= -->
 
-          <!-- ========= START: Right Div Section ======== -->
-          <div style="padding-left: 50px;" class="col-md-6">
-              <span class="Montserrat-h4">A beautiful profile can help you get more clients!</span>
-              
+            <!-- ================= START: Main Form Div ========== -->
+            <div style="padding-top: 50px;padding-left: 50px;background-color: #fff;height: 100%;" class="col-md-6">
+                <div ng-view></div>
+            </div>
+
+            <!-- ================= END: Main Form Div ========== -->
+            
+            <!-- ================= START: RightMost Div =========== -->
+            <div style="padding-left: 50px;padding-top: 80px;" class="col-md-3">
               <div style="background-color: #eee" id="value_prop" style="padding-top:50px;"> 
-                <div style="padding-top: 50px;" class="col-md-8">
-                  <div>
-                    <div style="color:#075A6E;float:left;font-size: 20px;font-family: HelveticaNeueLTStd-Bd;">FREE</div>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="h8">Create your profile for Free. It's FREE forever.</span>
-                  </div>
-
+                <div style="padding-top: 20px;"> 
+                  <div class="">
+                    <span style="color:#075A6E;" class="h1 icon-icon_profile1"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="h8">A beautiful profile can help you get more clients. Its <strong>FREE!</strong></span>              
+                  </div>     
+                              
                   <div style="padding-top: 20px;" class="">
                     <span style="color:#075A6E;" class="h1 icon-find_accountant_landing"></span>&nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="h8">Businesses, who are looking for accountants can find you easily!</span>
@@ -236,21 +199,15 @@
                   </div>
                 </div>             
               </div>
-          </div>          
-          <!-- ========= END: Right Div Section ======== -->
-
-      </div>
-
-      <!-- ======================= START: Experience & Expertize div -->
-      <div class="bg-img row">
+          </div>
+            <!-- ================= END: RightMost Div =========== -->            
+            
+        </div>
+        <!-- ================== END: Main body content ================= -->
         
-
-      </div>
-      <!-- ======================= START: Experience & Expertize div -->
-
+        <footer>
+      </footer>
     </div>
-
-    <!-- ====================== END: BODY CONTAINER =================== -->    
-
-  </body>
+    
+</body>
 </html>

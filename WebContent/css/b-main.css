@@ -7,7 +7,7 @@
 
 @font-face{
 	font-family: HelveticaNeueLTStd-Lt;
-	src: url(../fonts/HelveticaNeueLTStd-Lt.otf) format("opentype");
+	src: url(../fonts/HelveticaNeueLTStd-55-roman.otf) format("opentype");
 }
 
 @font-face{
@@ -15,11 +15,23 @@
 	src: url(../fonts/HelveticaNeueLTStd-Bd.otf) format("opentype");
 }
 
+h1,h2,h3,h4,h5,h6,h7,.h1,.h2,.h3,.h4,.h5,.h6,.h7 {
+	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
+	letter-spacing: 1px;
+}
+
 .HelveticaNeue-h2{
 	font-family: 'HelveticaNeueLTStd-Lt', Arial;
 	font-size: 22px;
 	color: #075A6E;	
 	letter-spacing: 1px;
+}
+
+.HelveticaNeue-h2-bold{
+	font-family: 'HelveticaNeueLTStd-Bd', Arial;
+	font-size: 22px;
+	color: #444141;	
+	letter-spacing: 0px;
 }
 
 .HelveticaNeue-h4{
@@ -32,8 +44,8 @@
 .HelveticaNeue-h4-bold{
 	font-family: 'HelveticaNeueLTStd-Bd', Arial;
 	font-size: 18px;
-	color: #5F5D5D;	
-	letter-spacing: 1px;
+	color: #000;	
+	letter-spacing: 0px;
 }
 
 .HelveticaNeue-h6{
@@ -57,12 +69,81 @@
 	letter-spacing: .75px;
 }
 
+
+.h2,h2{
+	font-family: HelveticaNeueLTStd-Lt;
+	font-size: 28px;
+	font-weight: 400;
+	padding-bottom: 6px;
+	color: #000;
+}
+
+.h3, h3{
+	font-family: 'HelveticaNeueLTStd-Lt';
+	color:#666668;
+	font-weight: 400;
+	font-size: 20px;
+}
+
+.h4,h4{
+	font-size: 19px;
+	#font-family:'HelveticaNeueLTStd-Lt', sans-serif;
+    font-weight: 400;	
+    letter-spacing: 1px;
+    line-height: 22px;
+    color:#18191A;   
+}
+
+.h5,h5 {
+	font-size: 18px;
+	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
+    font-weight: 400;	
+    letter-spacing: .5px;
+    line-height: 22px;
+    color:#18191A;   
+}
+
+.h6,h6{
+	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
+	font-weight: 400;
+	font-size: 17px;
+	letter-spacing: .75px;
+	line-height: 22px;
+	color: #18191A;
+}
+
+.h7,h7{
+	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
+	font-size: 16px;
+	letter-spacing: .5px;
+	line-height: 18px;
+	color: #333436;
+    font-weight: 400;
+}
+
+.h8,h8{
+	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
+	font-size: 15px;
+	letter-spacing: 0px;
+	line-height: 20px;
+	color: #505152;
+	font-weight: 400;
+}
+
+.h9,h9{
+	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
+	font-size: 13px;
+	letter-spacing: 0px;
+	line-height: 18px;
+	color: #505152;
+}
+
 .Montserrat-h2{
 	font-family: 'Montserrat', Arial;
 	font-size: 20px;
 	font-weight: 400;
 	color: #5F5D5D;	
-	letter-spacing: 1px;
+	letter-spacing: 0.5px;
 }
 
 .Montserrat-h3{
@@ -126,6 +207,7 @@
 
 # ==================== END: Fonts ====================
 
+
 .jumbotron { 
 	background-image: url('../img/blue-background.png');
 	background-color: #60A2DA;
@@ -167,7 +249,7 @@ body{
 .navbar-inverse{
 	#background-image: url('../img/satinweave.png');
 	background-color: #fff;
-	height: 70px;
+	height: 60px;
 }
 
 .navbar-nav>li>a {
@@ -176,14 +258,17 @@ body{
 }
 
 .navbar-links {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 14px;
-	font-weight: 400;
+	font-family:'Montserrat', sans-serif;
+	font-size: 12px;
+	font-weight: 400;	
+	letter-spacing: 0px;
+	line-height: 22px;
 }
 
 .navbar-inverse .navbar-nav>li>a {
 	color: #075B77;
-	letter-spacing: 1px;
+	letter-spacing: .25px;
+	text-transform: uppercase;
 }
 
 .nav-header {
@@ -228,25 +313,28 @@ body{
 
 .btn-default {
 	color: #fff;
-	background-color: #10ABDF;
-	border-color: #10ABDF;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-family: 'Open Sans', serif;
+	background-color: #0B91BB;
+	border-color: #0B91BB;
+	
+	font-family: 'Montserrat', serif;
 	font-weight: 400;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
 	color: #fff;
 	background-color: #5C6069;
-	border-color: #5C6069;
+	border-color: #5C6069;	
 }
 
 .btn-secondary{
 	color: #fff;
 	background-color: #9AA1B1;
 	border-color: #9AA1B1;
+
+    font-family: 'Montserrat', serif;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .btn-secondary:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
@@ -472,11 +560,6 @@ body{
 	#height: 150px;
 }
 
-h1,h2,h3,h4,h5,h6,h7,.h1,.h2,.h3,.h4,.h5,.h6,.h7 {
-	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
-	letter-spacing: 1px;
-}
-
 .landingpage_columnar_value_props_header {
 	font-family: 'HelveticaNeueLTStd-Lt', sans-serif;
 	color: #348eda; 
@@ -494,74 +577,6 @@ h1,h2,h3,h4,h5,h6,h7,.h1,.h2,.h3,.h4,.h5,.h6,.h7 {
 	letter-spacing: 1px;
 	font-weight: 700;
 	font-size: 22px;
-}
-
-.h2,h2{
-	font-family: HelveticaNeueLTStd-Lt;
-	font-size: 28px;
-	font-weight: 400;
-	padding-bottom: 6px;
-	color: #000;
-}
-
-.h3, h3{
-	font-family: 'HelveticaNeueLTStd-Lt';
-	color:#666668;
-	font-weight: 400;
-	font-size: 20px;
-}
-
-.h4,h4{
-	font-size: 19px;
-	#font-family:'HelveticaNeueLTStd-Lt', sans-serif;
-    font-weight: 400;	
-    letter-spacing: 2px;
-    line-height: 22px;
-    color:#18191A;   
-}
-
-.h5,h5 {
-	font-size: 18px;
-	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
-    font-weight: 400;	
-    letter-spacing: .75px;
-    line-height: 22px;
-    color:#18191A;   
-}
-
-.h6,h6{
-	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
-	font-weight: 400;
-	font-size: 17px;
-	letter-spacing: .75px;
-	line-height: 22px;
-	color: #18191A;
-}
-
-.h7,h7{
-	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
-	font-size: 16px;
-	letter-spacing: 0px;
-	line-height: 18px;
-	color: #333436;
-    font-weight: 400;
-}
-
-.h8,h8{
-	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
-	font-size: 15px;
-	letter-spacing: .75px;
-	line-height: 22px;
-	color: #18191A;
-	font-weight: 400;
-}
-
-.h9,h9{
-	font-family:'HelveticaNeueLTStd-Lt', sans-serif;
-	font-size: 14px;
-	letter-spacing: .75px;
-	line-height: 20px;
-	color: #18191A;
 }
 
 .radial-gradient {
@@ -824,8 +839,9 @@ a{
 }
 
 .user-review-reviewer-detail{
-	color:#0A6F1D;
+	color:#045E15;
 	font-family: Montserrat;
+	letter-spacing: 0px;
 }
 
 .divcrumb-headers{
@@ -861,5 +877,12 @@ form > .row {
 }
 
 .form-control {
-	letter-spacing: 1px;
+	letter-spacing: .50px;
+	border: 1px solid #868181;
+}
+
+.form-signup{
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
 }
