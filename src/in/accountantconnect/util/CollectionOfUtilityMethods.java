@@ -12,6 +12,7 @@ public class CollectionOfUtilityMethods {
     }
     
     public static String[] getFirstNameAndLastNameArrayFromFullName(String fullName){
+    	System.out.println(fullName);
 		String[] firstnameAndLastnameArr = fullName.split(" ");
 		if(firstnameAndLastnameArr.length == 2){
 			return firstnameAndLastnameArr;
@@ -21,6 +22,7 @@ public class CollectionOfUtilityMethods {
 			firstnameAndLastnameArr[0] = firstName; 
 			firstnameAndLastnameArr[1] = "";
 			return firstnameAndLastnameArr;
+			
 		}else{
 		
 			firstnameAndLastnameArr = new String[2];

@@ -1,6 +1,6 @@
 package in.accountantconnect.domain;
 
- 
+
 
 import java.sql.Date;
 
@@ -22,49 +22,120 @@ public class AccountantProfile {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
 	private Integer profileid;
-	
+
 	@Column
 	private Integer accountantid;
 	
 	@Column
-	private String firstName;
+	private String imgLink;
 	
-	@Column 
-	private String lastName;
-	
-	 
-	@Column
-	private String city;
-	
-	@Column
-	private String companyName;
-	
-	@Column
-	private String companyDesc;
-	
-	@Column
-	private String speciality ; 
-		
-	@Column
-	private Date joindate;
-	
-	@Column
-	private Integer isProfileCreated;
-	
-	@Column
-	private Date profileCreateDate;
-	
+
+
 	@Column
 	private String email;
-	
+
 	@Column
 	private String mobile;
-	
+
 	@Column
-	private Integer age;
-	
+	private String firstName;
+
+	@Column 
+	private String lastName;
+
 	@Column
-	private Integer isHidden;
+	private String city;
+
+	@Column
+	private String companyName;
+
+	@Column
+	private String companyAddress;
+
+	@Column
+	private String speciality;
+
+	@Column
+	private String shortDesc;
+
+	@Column
+	private String experience;
+
+	@Column
+	private String clients;
+
+	@Column
+	private String facebookid;
+
+	@Column
+	private String linkedinid;
+
+	@Column
+	private String twitterid;
+
+	@Column 
+	private String education;
+
+	public String getEducation() {
+		return education;
+	}
+
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+	public String getShortDesc() {
+		return shortDesc;
+	}
+
+	public void setShortDesc(String shortDesc) {
+		this.shortDesc = shortDesc;
+	}
+
+
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
+	public String getClients() {
+		return clients;
+	}
+
+	public void setClients(String clients) {
+		this.clients = clients;
+	}
+
+	public String getFacebookid() {
+		return facebookid;
+	}
+
+	public void setFacebookid(String facebookid) {
+		this.facebookid = facebookid;
+	}
+
+	public String getLinkedinid() {
+		return linkedinid;
+	}
+
+	public void setLinkedinid(String linkedinid) {
+		this.linkedinid = linkedinid;
+	}
+
+	public String getTwitterid() {
+		return twitterid;
+	}
+
+	public void setTwitterid(String twitterid) {
+		this.twitterid = twitterid;
+	}
+
+	public String getSpeciality() {
+		return speciality;
+	}
 
 	public Integer getAccountantid() {
 		return accountantid;
@@ -73,7 +144,7 @@ public class AccountantProfile {
 	public void setAccountantid(Integer accountantid) {
 		this.accountantid = accountantid;
 	}
- 
+
 
 	public String getCity() {
 		return city;
@@ -83,40 +154,14 @@ public class AccountantProfile {
 		return companyName;
 	}
 
-	public String getCompanyDesc() {
-		return companyDesc;
+	public String getCompanyAddress() {
+		return companyAddress;
 	}
 
-	public String getSpeciality() {
-		return speciality;
-	}
+
 
 	public void setCity(String city) {
 		this.city = city;
-	}
-
-	public Date getJoindate() {
-		return joindate;
-	}
-
-	public void setJoindate(Date joindate) {
-		this.joindate = joindate;
-	}
-
-	public Integer getIsProfileCreated() {
-		return isProfileCreated;
-	}
-
-	public void setIsProfileCreated(Integer profileCreated) {
-		this.isProfileCreated = profileCreated;
-	}
-
-	public Date getProfileCreateDate() {
-		return profileCreateDate;
-	}
-
-	public void setProfileCreateDate(Date profileCreationDate) {
-		this.profileCreateDate = profileCreationDate;
 	}
 
 	public String getEmail() {
@@ -135,14 +180,6 @@ public class AccountantProfile {
 		this.mobile = mobile;
 	}
 
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -159,31 +196,33 @@ public class AccountantProfile {
 		this.lastName = lastName;
 	}
 
-	public Integer getIsHidden() {
-		return isHidden;
+
+	public String getImgLink() {
+		return imgLink;
 	}
 
-	public void setIsHidden(Integer isHidden) {
-		this.isHidden = isHidden;
+	public void setImgLink(String imgLink) {
+		this.imgLink = imgLink;
 	}
+	
 
 	public void setCompanyName(String companyName) {
-		// TODO Auto-generated method stub
 		this.companyName=companyName;
-		
+
 	}
 
-	public void setCompanyDesc(String companyDesc) {
+	public void setCompanyAddress(String companyAddress) {
 		// TODO Auto-generated method stub
-		this.companyDesc=companyDesc;
-		
+		this.companyAddress=companyAddress;
+
 	}
 
 	public void setSpeciality(String speciality) {
 		// TODO Auto-generated method stub
-		this.speciality=speciality;
-		
-	}	
-	
+         this.speciality=speciality;
+	}
+
+
+
 }
 

@@ -46,8 +46,19 @@
 		<property name="sessionFactory" ref="AccountantConnectSessionFactory" />
    	  </bean> 
    	  
+   	  <bean name="accountantProfileDao" class="in.accountantconnect.dao.AccountantProfileDao">
+		<property name="sessionFactory" ref="AccountantConnectSessionFactory" />
+   	  </bean> 
+   	  
+   	  <bean name="accountantReviewDao" class="in.accountantconnect.dao.AccountantReviewDao">
+		<property name="sessionFactory" ref="AccountantConnectSessionFactory" />
+   	  </bean> 
+   	  
    	  <bean id="editAccountantService" class="in.accountantconnect.service.accountant.EditAccountantService">
+   	    
    	        <property name="accountantDao" ref="accountantDao"/>
+   	        <property name="accountantProfileDao" ref="accountantProfileDao"/>
+   	        <property name="accountantReviewDao"  ref="accountantReviewDao"/>
    	  </bean>
    	  
    	  <bean name="trackingDao" class="in.accountantconnect.dao.TrackingDao">
@@ -99,7 +110,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/accountantconnect" />
 		<property name="username" value="root" />
-		<property name="password" value="public" />
+		<property name="password" value="root" />
 	</bean>
 	
 	<bean id="transactionManager"

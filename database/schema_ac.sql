@@ -27,3 +27,31 @@ CREATE TABLE tracking (
   
   PRIMARY KEY (trackid)
 )
+
+
+CREATE TABLE accountantProfile (
+ 
+  profileid int NOT NULL AUTO_INCREMENT,
+  imglink varchar(500) NOT NULL,
+  accountantid int NOT NULL,
+  email varchar(80) DEFAULT NULL,
+  firstname varchar(50) DEFAULT NULL,
+  lastname varchar(50) DEFAULT NULL,
+  mobile varchar(20) DEFAULT NULL,
+  city varchar(80) DEFAULT NULL,
+  speciality varchar(40) DEFAULT NULL,
+  companyname varchar(60) DEFAULT NULL,
+  companyaddress varchar(200) DEFAULT NULL,
+  shortdesc varchar(1000) DEFAULT NULL,
+  experience varchar(200) DEFAULT NULL,
+  clients varchar(200) DEFAULT NULL,
+  facebookid varchar(200) DEFAULT NULL,
+  linkediniid varchar(200) DEFAULT NULL,
+  twitterid varchar(200) DEFAULT NULL,
+  education varchar(100) DEFAULT NULL,
+ 
+  
+  PRIMARY KEY (profileid)
+ 
+) AUTO_INCREMENT=1520 
+
