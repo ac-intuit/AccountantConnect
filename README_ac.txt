@@ -39,3 +39,8 @@ mailChimp - accountantconnect/acintuit42
 Google Analytics - ac.intuit42@gmail.com/acintuit
 
 ################################## END UserNames & Passwords #########################
+
+In eclipse (or while starting tomcat from any system) set the environment to ENV=dev
+In eclipse, go to "Run Configuration" -> Environment tab
+
+

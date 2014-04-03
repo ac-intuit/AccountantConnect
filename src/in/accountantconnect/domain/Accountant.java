@@ -22,6 +22,9 @@ public class Accountant {
 	private Integer accountantid;
 	
 	@Column
+	private String email;
+	
+	@Column
 	private String firstName;
 	
 	@Column 
@@ -29,9 +32,6 @@ public class Accountant {
 	
 	@Column
 	private String password;
-	
-	@Column
-	private String city;
 		
 	@Column
 	private Date joindate;
@@ -43,17 +43,68 @@ public class Accountant {
 	private Date profileCreateDate;
 	
 	@Column
-	private String email;
+	private Integer isHidden;
 	
 	@Column
 	private String mobile;
 	
 	@Column
+	private String businessPhone;
+	
+	@Column
+	private String city;
+		
+	@Column
 	private Integer age;
 	
 	@Column
-	private Integer isHidden;
-
+	private String area;
+	
+	@Column
+	private String photoFileName;
+	
+	@Column
+	private String shortDescription;
+	
+	@Column 
+	private String longDescription;
+	
+	@Column
+	private String linkedinProfile;
+	
+	@Column
+	private String fbProfile;
+	
+	@Column 
+	private String gplusProfile;
+	
+	@Column
+	private Integer yearOfExp;
+	
+	@Column
+	private String areasOfExpertise;
+	
+	@Column
+	private String education;
+	
+	@Column 
+	private String certifications;
+	
+	@Column
+	private String addressLine1;
+	
+	@Column
+	private String addressLine2;
+	
+	@Column
+	private String state;
+	
+	@Column 
+	private Integer pincode;
+	
+	@Column
+	private String country;	
+	
 	public Integer getAccountantid() {
 		return accountantid;
 	}
@@ -148,6 +199,142 @@ public class Accountant {
 
 	public void setIsHidden(Integer isHidden) {
 		this.isHidden = isHidden;
+	}
+
+	public String getBusinessPhone() {
+		return businessPhone;
+	}
+
+	public void setBusinessPhone(String businessPhone) {
+		this.businessPhone = businessPhone;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getPhotoFileName() {
+		return photoFileName;
+	}
+
+	public void setPhotoFileName(String photoFileName) {
+		this.photoFileName = photoFileName;
+	}
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+
+	public String getLongDescription() {
+		return longDescription;
+	}
+
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
+	}
+
+	public String getLinkedinProfile() {
+		return linkedinProfile;
+	}
+
+	public void setLinkedinProfile(String linkedinProfile) {
+		this.linkedinProfile = linkedinProfile;
+	}
+
+	public String getFbProfile() {
+		return fbProfile;
+	}
+
+	public void setFbProfile(String fbProfile) {
+		this.fbProfile = fbProfile;
+	}
+
+	public String getGplusProfile() {
+		return gplusProfile;
+	}
+
+	public void setGplusProfile(String gplusProfile) {
+		this.gplusProfile = gplusProfile;
+	}
+
+	public Integer getYearOfExp() {
+		return yearOfExp;
+	}
+
+	public void setYearOfExp(Integer yearOfExp) {
+		this.yearOfExp = yearOfExp;
+	}
+
+	public String getAreasOfExpertise() {
+		return areasOfExpertise;
+	}
+
+	public void setAreasOfExpertise(String areasOfExpertise) {
+		this.areasOfExpertise = areasOfExpertise;
+	}
+
+	public String getEducation() {
+		return education;
+	}
+
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+	public String getCertifications() {
+		return certifications;
+	}
+
+	public void setCertifications(String certifications) {
+		this.certifications = certifications;
+	}
+
+	public String getAddressLine1() {
+		return addressLine1;
+	}
+
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Integer getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(Integer pincode) {
+		this.pincode = pincode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}	
 	
 }

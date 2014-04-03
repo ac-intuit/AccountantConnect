@@ -69,6 +69,12 @@ h1,h2,h3,h4,h5,h6,h7,.h1,.h2,.h3,.h4,.h5,.h6,.h7 {
 	letter-spacing: .75px;
 }
 
+.HelveticaNeue-h10-bold{
+	font-family: 'HelveticaNeueLTStd-Bd', Arial;
+    font-size: 12px;
+    color: #5F5D5D; 
+    letter-spacing: .75px;
+}
 
 .h2,h2{
 	font-family: HelveticaNeueLTStd-Lt;

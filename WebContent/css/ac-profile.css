@@ -67,3 +67,11 @@ a:active {color:#0000FF;}
 	padding-bottom: 6px;
 	color: #535151;
 }
+
+.editprofile-form-label{
+	font-family: HelveticaNeueLTStd-Bd;
+    font-size: 15px;
+    font-weight: 400;
+    padding-bottom: 6px;
+    color: #881414;
+}

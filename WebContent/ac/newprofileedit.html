@@ -11,7 +11,7 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,600,700' rel='stylesheet' type='text/css'>   
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css'> 
-
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <!--
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>  
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'> -->
@@ -26,9 +26,20 @@
     <link href="../css/signin.css" rel="stylesheet">
     <link href="../css/ac-icon-font.css" rel="stylesheet">
     <link href="../css/ac-profile.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    
-    <!-- ========= Load JS ======== -->
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="../css/jquery.fileupload-ui.css">
+ 
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+
+
+         <!-- ========= Load JS ======== -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.js"></script>
     <script src="../js/ac-signup.js"></script>
@@ -41,14 +52,23 @@
 
     
     
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
+        <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+        <script src="../js/vendor/jquery.ui.widget.js"></script>
+       <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+        <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
+        <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+        <script src="http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+        <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+        <script src="../js/jquery.iframe-transport.js"></script>
+        <!-- The basic File Upload plugin -->
+        <script src="../js/jquery.fileupload.js"></script>
+        <!-- The File Upload file processing plugin -->
+        <script src="../js/jquery.fileupload-fp.js"></script>
+        <!-- The File Upload user interface plugin -->
+        <script src="../js/jquery.fileupload-ui.js"></script>
+        <!-- The main application script -->
+        <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE8+ -->
+        <!--[if gte IE 8]><script src="js/cors/jquery.xdr-transport.js"></script><![endif]-->
 
 
 <script>
@@ -113,7 +133,6 @@
        </div>
       </div>
     </div>
-
     <div style="padding-left: 0px;margin-left: 0px;margin-top: 0px;" class="" ng-controller="EditProfileSideBarController">
 
         <!-- START: Top Bar -->
@@ -145,7 +164,7 @@
                   <br>
                   <li class="nav-header">Introduction</li>
                   <li ng-repeat="editProfileLeftNav_intro in editProfileLeftNavs_intro" class="{{editProfileLeftNav_intro.class}}" ng-click="editProfileLeftNavs_introClicked($event, $index)">
-                    <a href="{{editProfileLeftNav_intro.link}}">
+                    <a href="#{{editProfileLeftNav_intro.link}}">
                         <i class='glyphicon {{editProfileLeftNav_intro.glyphicon}}' ></i>&nbsp;&nbsp;&nbsp;&nbsp;{{editProfileLeftNav_intro.LinkText}}
                         &nbsp;&nbsp;&nbsp;&nbsp;<i class='profile-page-icons pull-right glyphicon {{editProfileLeftNav_intro.IsItemFilled}}' ></i>
                     </a>
@@ -155,7 +174,7 @@
                   <li class="nav-header">Professional Information</li>
                   
                   <li ng-repeat="editProfileLeftNav_prof in editProfileLeftNavs_prof" class="{{editProfileLeftNav_prof.class}}" ng-click="editProfileLeftNavs_profClicked($event, $index)">
-                    <a href="{{editProfileLeftNav_prof.link}}">
+                    <a href="#{{editProfileLeftNav_prof.link}}">
                         <i class='glyphicon {{editProfileLeftNav_prof.glyphicon}}' ></i>&nbsp;&nbsp;&nbsp;&nbsp;{{editProfileLeftNav_prof.LinkText}}
                         &nbsp;&nbsp;&nbsp;&nbsp;<i class='profile-page-icons pull-right glyphicon {{editProfileLeftNav_prof.IsItemFilled}}' ></i>
                     </a>
@@ -173,7 +192,7 @@
             <!-- ============= END: Left panel ============= -->
 
             <!-- ================= START: Main Form Div ========== -->
-            <div style="padding-top: 50px;padding-left: 50px;background-color: #fff;height: 100%;" class="col-md-6">
+            <div ng-controller="AccountantController" style="padding-top: 50px;padding-left: 50px;background-color: #fff;height: 100%;" class="col-md-6">
                 <div ng-view></div>
             </div>
 
@@ -209,5 +228,8 @@
       </footer>
     </div>
     
+
+
+
 </body>
 </html>
