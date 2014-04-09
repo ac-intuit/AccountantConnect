@@ -120,10 +120,10 @@
         <div class="row">
            <div class="col-md-12">
                 <form style="padding-top: 100px" class="form-signin" role="form">
-                    <div class="form-signin-heading HelveticaNeue-h2-bold"><span id="nameSpan" class="{{nameIsHidden}}">Dear {{accountantName}},</span><br> Choose Your Password</div>
-                    <input id="email" type="email" class="form-control" placeholder="Email address" ng-model="accountantEmail" {{emailReadOnly}} required>
+                    <div class="form-signin-heading HelveticaNeue-h2-bold">Login</div>
+                    <input id="email" type="email" class="form-control" placeholder="Email address" ng-model="accountantEmail" required>
                     <input id="password" type="password" class="form-control" placeholder="Password" ng-model="accountantPassword" autofocus required>
-                    <a class="btn-lg btn-default btn btn-block" type="submit" ng-click="submitPassword()">Create Account</a>
+                    <a class="btn-lg btn-default btn btn-block" type="submit" ng-click="login()">Login &raquo;</a>              
                 </form>
             </div>
         </div>

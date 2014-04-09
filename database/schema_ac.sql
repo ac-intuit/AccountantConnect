@@ -3,7 +3,7 @@
 --------------------------------
 CREATE TABLE accountant (
   accountantid int NOT NULL AUTO_INCREMENT,
-  email varchar(80),
+  email varchar(80) NOT NULL UNIQUE,
   firstname varchar(50),
   lastname varchar(50) ,
   password varchar(80) ,
@@ -12,7 +12,6 @@ CREATE TABLE accountant (
   profilecreatedate date ,
   isHidden int ,
   
-  --Profile information
   mobile varchar(20) ,
   businessphone varchar(20)  ,
   city varchar(80) ,
@@ -37,6 +36,8 @@ CREATE TABLE accountant (
   state varchar(100),
   pincode int,
   country varchar(100),
+  
+  noofvisittoeditprofilepage int,
   
   PRIMARY KEY (accountantid)
 ) AUTO_INCREMENT=1120 

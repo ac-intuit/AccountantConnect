@@ -11,7 +11,7 @@ public class EnumCollection {
 	}
 	
 	public enum EventStatus {
-		failure(0),success(1);		
+		failure(0),success(1),nosession(2);		
 		private Integer value;
 		
 		private EventStatus(Integer value) {

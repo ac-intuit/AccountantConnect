@@ -288,6 +288,64 @@ body{
 	background-color: transparent;
 }
 
+.subnav a{
+	color: #fff;
+}
+
+.subnav a:focus,.subnav a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-inverse .navbar-nav>li.dropdown>a {
+    color: #434546;
+    letter-spacing: .25px;
+    text-transform: none;
+    font-family:'Montserrat', sans-serif;
+    font-size: 12px;
+}
+
+.nav-pills > li.active > a .caret,
+.nav-pills > li.active > a:hover .caret,
+.nav-pills > li.active > a:focus .caret {
+  border-top-color: #000;
+  border-bottom-color: #000;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
+border-top-color: #000;
+border-bottom-color: #000;
+}
+
+.navbar-inverse .navbar-nav > .open > a .caret, .navbar-inverse .navbar-nav > .open > a:hover .caret, .navbar-inverse .navbar-nav > .open > a:focus .caret {
+    border-top-color: #000;
+    border-bottom-color: #000;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  color: #000;
+  background-color: #fff;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+	color: #262626;
+	text-decoration: none;
+	background-color: #f5f5f5;
+}
+
+.dropdown-menu > li > a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.428571429;
+	color: #333333;
+	white-space: nowrap;
+	font-family: Montserrat,"Open Sans";
+	font-size: 12px;
+}
 /*==================== END:Anything related to navbar =============*/
 
 
@@ -884,7 +942,7 @@ form > .row {
 
 .form-control {
 	letter-spacing: .50px;
-	border: 1px solid #868181;
+	border: 1px solid #B6B6B6;
 }
 
 .form-signup{

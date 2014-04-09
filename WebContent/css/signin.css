@@ -33,3 +33,8 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+	cursor: not-allowed;
+	background-color: #fff;
+}

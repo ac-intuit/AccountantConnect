@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html ng-app="AccountantConnect">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +30,7 @@
     <!-- ========= Load JS ======== -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.0/jquery.cookie.js"></script>
+    <script src="../js/angular.1.0.7min.js"></script>    
     <script src="../js/ac-signup.js"></script>
     <script src="../js/ac-util.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -92,11 +93,13 @@ $(document).ready(function() {
             accountant_email:accountantEmail 
         },
         function(data, status) {
-			if(status == "success" && data.success == true){
-                $("#accountantAdditionSuccessDiv").show();
+			if(status == "success" && data.code == 1){
                 $("#accountantAdditionErrorDiv").hide();
+                //Set the cookie and redirect to the "set password" page
+                $.cookie("profile_email", accountantEmail, { expires : 100 });
+                $.cookie("profile_name", accountantName, { expires : 100 });                
+                window.location.href = "signup.html";
             }else{
-                $("#accountantAdditionSuccessDiv").hide();
                 $("#accountantAdditionErrorDiv").show();
             }
 			$("#accountantRegistrationButton").removeClass("disabled");;
@@ -169,11 +172,18 @@ $(document).ready(function() {
         <br>
         <!-- <div style="color:#fff;" class="h6 pull-right">In private beta <i class="glyphicon glyphicon-question-sign"></i></div><br> -->
         <!-- <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Open Sans',arial;;font-size:32px;font-weight: 700"><span>Create your "accountant page" on the web. Grow your practice!</span></p>  -->
-        <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Montserrat',arial;;font-size:28px;font-weight: 700"><span>We can help accountants grow by making them more visible to the clients.</span></p>
-        <p> <h2 style="text-shadow: 0 1px 1px #000;color:white;letter-spacing:.5px;align:center;font-family: 'Open Sans', sans-serif;font-size:20px;font-weight: 400;">Create your profile  &#8594;  Participate &amp; Share on our platform  &#8594;  Have more clients reach you.</h2></p>
+        <p style="text-shadow: 0 1px 1px #000;color:white;align:center;font-family:'Montserrat',arial;;font-size:26px;font-weight: 700">
+            <span>Many business owners are going to search an accountant on our portal.</span>
+            <a style="text-decoration: underline;color:white;font-size: 14px;" href="">(Why?)</a>
+        </p>
+        <p> 
+           <h2 style="color:#F5DBC2;letter-spacing:.5px;align:center;font-family: 'Montserrat', sans-serif;font-size:22px;font-weight: 400;">
+                List yourself, get noticed and find more clients. It's<span style="font-size: 24px;"> FREE!</span>
+            </h2>
+        </p><br>
         
         <div style="margin-left:400px;" class="landingpage-main-img"><img style="max-height: 100%;max-width: 100%;" src="../img/landingpage_splash_image.png" alt="Accountant business collaboration"/></div>
-        <div style="margin-top:270px;"><a id="landingpageJoinAccountantConnectButton" class="btn-lg btn-primary btn" role="button">Join the network now! &raquo;</a></div>
+        <div style="margin-top:270px;"><a id="landingpageJoinAccountantConnectButton" class="btn-lg btn-primary btn" role="button">Create your profile now! &raquo;</a></div>
         </div> 
         <!-- a class="btn btn-default btn-xtragreen-default " href="#" role="button">EXPLAIN ME FURTHER &raquo;</a></p> -->
      </div>
@@ -255,9 +265,9 @@ $(document).ready(function() {
 							<button type="button" class="close">x</button>
 							Thank you for registering. We will reach out to you soon !
 						</div>
-						<div id="accountantAdditionErrorDiv" class="alert alert-danger" style="display: none;">
+						<div  id="accountantAdditionErrorDiv" class="alert alert-danger" style="display: none;">
 							<button type="button" class="close">x</button>
-							Oops! Something went wrong. Just drop your contact number at contact@accountantconnect.in and we will get back immediately.
+							Oops! Something went wrong. Please try again. <br> Our engineers have been notified and will look into it on priority.
 						</div>
 
 						<!-- =================== START: Error handling for the form ==============-->

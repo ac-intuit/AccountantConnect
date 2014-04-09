@@ -1,24 +1,37 @@
 package in.accountantconnect.web.servlet;
 
+import in.accountantconnect.common.MessageCollection;
+import in.accountantconnect.service.accountant.EditAccountantService;
 import in.accountantconnect.util.CollectionOfUtilityMethods;
 import in.accountantconnect.util.EnvManager;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
+
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import org.imgscalr.Scalr;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 /**
  * This class handles the image upload for the time.
@@ -29,10 +42,23 @@ import org.json.JSONObject;
 public class UploadServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 14123L;
+	private Log _log = LogFactory.getLog(this.getClass().getCanonicalName());
+	
+	@Autowired
+	private EditAccountantService editAccountantService;
+	
+	public void init(ServletConfig config) {
+		  try {
+			super.init(config);
+			SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,config.getServletContext());
+		  } catch (ServletException e) {
+			_log.fatal("***init failed***", e.getRootCause());
+			e.printStackTrace();
+		  }
+		}
 
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         
         if (request.getParameter("getfile") != null && !request.getParameter("getfile").isEmpty()) {
             File file = new File(EnvManager.getUploadedImageStorageLocation() + request.getParameter("getfile"));
@@ -102,8 +128,14 @@ public class UploadServlet extends HttpServlet {
     @SuppressWarnings("unchecked")
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        if (!ServletFileUpload.isMultipartContent(request)) {
+    	//Is session valid?
+    	if(!CollectionOfUtilityMethods.isReqInSession(request)){
+       		throw new IllegalArgumentException(MessageCollection.NEED_TO_LOGIN_TO_ACCESS_THIS_FEATURE);
+    	}
+    	HttpSession session = request.getSession();
+    	Integer accountantid = (Integer)session.getAttribute("accountantid");
+    	
+    	if (!ServletFileUpload.isMultipartContent(request)) {
             throw new IllegalArgumentException("Request is not multipart, please 'multipart/form-data' enctype for your form.");
         }
 
@@ -123,6 +155,8 @@ public class UploadServlet extends HttpServlet {
                 	    }
                         File file = new File(imageStorageLocation, item.getName());
                         item.write(file);
+                        //save it to the DB
+                        editAccountantService.saveAccountantPhoto(accountantid, "../imgupload?getfile=" + item.getName());
                         JSONObject jsono = new JSONObject();
                         jsono.put("name", item.getName());
                         jsono.put("size", item.getSize());

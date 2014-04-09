@@ -52,8 +52,12 @@ a:active {color:#0000FF;}
     text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
 }
 
-.profile-page-icons{
+.profile-page-icon-red{
 	color:	#D12027;
+}
+
+.profile-page-icon-green{
+    color:  #097912;
 }
 
 .editprofile-brief-explanation{
@@ -74,4 +78,8 @@ a:active {color:#0000FF;}
     font-weight: 400;
     padding-bottom: 6px;
     color: #881414;
+}
+
+.modal-content {
+	margin: 170px 0 0 -10px;
 }

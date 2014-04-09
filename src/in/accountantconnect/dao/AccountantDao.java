@@ -40,6 +40,43 @@ private SessionFactory sessionFactory;
 		}
 	}
 	
+	public Object readByEmail(String email) throws CommonException{
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Accountant.class);
+			criteria.add(Restrictions.eq("email", email));
+		try{
+			return criteria.uniqueResult();
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			throw new CommonException();
+		}
+	}
+	
+	public Object validateAccountant(String email, String password) throws CommonException{
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Accountant.class);
+			criteria.add(Restrictions.eq("email", email));
+			criteria.add(Restrictions.eq("password", password));
+		try{
+			return criteria.uniqueResult();
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			throw new CommonException();
+		}
+	}
+	
+	public Object doesTheEmailExist(String email) throws CommonException{
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Accountant.class);
+			criteria.add(Restrictions.eq("email", email));
+		try{
+			return criteria.uniqueResult();
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			throw new CommonException();
+		}
+	}	
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

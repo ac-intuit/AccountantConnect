@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -104,6 +105,12 @@ public class Accountant {
 	
 	@Column
 	private String country;	
+	
+	@Transient
+	private ProfileCompletionStatus profileCompletionStatus;
+	
+	@Column
+	private Integer noOfVisitToEditProfilepage;
 	
 	public Integer getAccountantid() {
 		return accountantid;
@@ -335,6 +342,23 @@ public class Accountant {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public ProfileCompletionStatus getProfileCompletionStatus() {
+		return profileCompletionStatus;
+	}
+
+	public void setProfileCompletionStatus(
+			ProfileCompletionStatus profileCompletionStatus) {
+		this.profileCompletionStatus = profileCompletionStatus;
+	}
+
+	public Integer getNoOfVisitToEditProfilepage() {
+		return noOfVisitToEditProfilepage;
+	}
+
+	public void setNoOfVisitToEditProfilepage(Integer noOfVisitToProfilepage) {
+		this.noOfVisitToEditProfilepage = noOfVisitToProfilepage;
 	}	
 	
 }

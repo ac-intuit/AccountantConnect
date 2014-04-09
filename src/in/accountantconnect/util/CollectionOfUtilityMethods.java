@@ -3,6 +3,7 @@ package in.accountantconnect.util;
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class CollectionOfUtilityMethods {
     public static String getParamValIfNotNullElseGetDefaultVal(String paramName, String defaultValue, HttpServletRequest req){
@@ -70,5 +71,25 @@ public class CollectionOfUtilityMethods {
     		e.printStackTrace();    		
     	}
     	return i;
+    }
+    
+    /**
+     * Helper function to check for the session
+     * @param req
+     * @return
+     */
+    
+    public static boolean isReqInSession(HttpServletRequest req){
+    	boolean isReqInSession = false;
+    	HttpSession session = req.getSession(false);
+    	if(session == null){
+    		return isReqInSession;
+    	}
+    	Integer accountantId = (Integer)session.getAttribute("accountantid");
+    	if(accountantId == null){
+    		return isReqInSession;
+    	} 
+    	isReqInSession = true;
+    	return isReqInSession;
     }
 }
