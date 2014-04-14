@@ -55,6 +55,13 @@ h1,h2,h3,h4,h5,h6,h7,.h1,.h2,.h3,.h4,.h5,.h6,.h7 {
 	letter-spacing: .75px;
 }
 
+.HelveticaNeue-h7-bold{
+    font-family: 'HelveticaNeueLTStd-Bd', Arial;
+    font-size: 15px;
+    color: #5F5D5D; 
+    letter-spacing: .75px;
+}
+
 .HelveticaNeue-h9{
 	font-family: 'HelveticaNeueLTPro-Lt', Arial;
 	font-size: 14px;
@@ -326,7 +333,7 @@ border-bottom-color: #000;
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
   color: #000;
-  background-color: #fff;
+  background-color: #FAF8F8;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -949,4 +956,13 @@ form > .row {
 	max-width: 330px;
 	padding: 15px;
 	margin: 0 auto;
+}
+
+.popover-title{
+	letter-spacing: .25px;
+	color: #000;
+}
+
+.popover{
+	letter-spacing: .25px;
 }

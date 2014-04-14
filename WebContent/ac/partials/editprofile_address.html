@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-4">
             <p style="padding-top: 20px;" class="editprofile-partial-header">Address</p>
-            <p><span class="editprofile-brief-explanation h8">Please provide your accurate address.<br>
-            <br> This information might help the clients decide the right 
-            accountant for their business. </span></p>
+            <p><span class="editprofile-brief-explanation h8">Please provide your accurate address and pin code.<br><br>
+            That will help us <span style="color:#000">point your place correctly in google maps.</span>
+           </span></p>
         </div>
         <div class="col-md-8">
             
@@ -29,7 +29,7 @@
                 
                 <div class="row">                  
                   <div class="col-xs-9 form-group">
-                    <input type="text" class="form-control" placeholder="State" ng-model="accountant.state">
+                    <input popover-placement="right" popover-append-to-body='true' popover="Start typing to see suggestions." popover-trigger="mouseenter" type="text" class="form-control" placeholder="State" ng-model="accountant.state" typeahead="state for state in states | filter:$viewValue | limitTo:8">
                   </div>
                 </div> 
                 

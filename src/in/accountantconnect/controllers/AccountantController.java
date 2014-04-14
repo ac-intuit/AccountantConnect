@@ -52,7 +52,7 @@ public class AccountantController {
     
     @RequestMapping(value="/saveProfile", method = RequestMethod.POST)
     @ResponseBody
-    public AppResponse<ProfileCompletionStatus> saveProfileWithBasicInfo(HttpServletRequest req){
+    public AppResponse<ProfileCompletionStatus> saveAccountantProfile(HttpServletRequest req){
        	if(!CollectionOfUtilityMethods.isReqInSession(req)){
     		return new AppResponse<ProfileCompletionStatus>(EventStatus.nosession.getValue(), null, MessageCollection.NEED_TO_LOGIN_TO_ACCESS_THIS_FEATURE);
     	}
@@ -70,6 +70,7 @@ public class AccountantController {
         String shortDescription = req.getParameter("shortDescription");
         String longDescription = req.getParameter("longDescription");
         
+        String websiteURL = req.getParameter("websiteURL");
         String linkedinProfile = req.getParameter("linkedinProfile");
         String fbProfile = req.getParameter("fbProfile");
         String gplusProfile = req.getParameter("gplusProfile");
@@ -91,7 +92,7 @@ public class AccountantController {
 
         return editAccountantService.saveAccountantProfile(id, email, firstName, lastName, 
         		mobile, businessPhone, city, age, area, 
-        		shortDescription, longDescription, 
+        		shortDescription, longDescription, websiteURL,
         		linkedinProfile, fbProfile, gplusProfile, 
         		yearOfExp, areasOfExpertise, 
         		education, certifications, 
@@ -124,6 +125,20 @@ public class AccountantController {
     		return new AppResponse<Accountant>(EventStatus.nosession.getValue(), null, MessageCollection.NEED_TO_LOGIN_TO_ACCESS_THIS_FEATURE);
     	}    	
     	return editAccountantService.getAccountantById(accountantId);
+    }
+    
+    @RequestMapping(value="/getPhotoLocation", method = RequestMethod.GET)
+    @ResponseBody
+    public AppResponse<String> getPhotoLocation(HttpServletRequest req){
+    	if(!CollectionOfUtilityMethods.isReqInSession(req)){
+    		return new AppResponse<String>(EventStatus.nosession.getValue(), null, MessageCollection.NEED_TO_LOGIN_TO_ACCESS_THIS_FEATURE);
+    	}
+    	HttpSession session = req.getSession(false);
+    	Integer accountantId = (Integer)session.getAttribute("accountantid");
+    	if(accountantId == null){
+    		return new AppResponse<String>(EventStatus.nosession.getValue(), null, MessageCollection.NEED_TO_LOGIN_TO_ACCESS_THIS_FEATURE);
+    	}    	
+    	return editAccountantService.getPhotoLocation(accountantId);
     }
 
     @RequestMapping(value="/profile/{id}", method = RequestMethod.GET)

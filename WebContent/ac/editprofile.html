@@ -125,7 +125,7 @@
 		          </a>
 		          <ul class="dropdown-menu">		          
                     <li>
-                     <a href="profile.html" target="_blank"> <i class='glyphicon glyphicon-eye-open' ></i> &nbsp;&nbsp;Preview Profile</a>                   
+                     <a href="sampleprofile.html" target="_blank"> <i class='glyphicon glyphicon-eye-open' ></i> &nbsp;&nbsp;Preview Profile</a>                   
                     </li>
                     <li>
                       
@@ -163,10 +163,18 @@
           </div>
           <div class="pull-right col-md-2">
             <div style="border-left: 1px solid #1d1d1d;border-right: 1px solid #1d1d1d;" class="subnav-text">
-              <a class="general-bar-links" href="profile.html" target="_blank">
-                <i class='glyphicon glyphicon-eye-open' ></i> &nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;
-                <i class='glyphicon glyphicon-share-alt' ></i>
-              </a>
+              <span class="{{accountant.PreviewLinkHidden}}">    
+                <a class="general-bar-links" href="profile.html" target="_blank">
+                    <i class='glyphicon glyphicon-eye-open' ></i> &nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;
+                    <i class='glyphicon glyphicon-share-alt' ></i>
+                </a>
+              </span>
+              <span class="{{accountant.SampleLinkHidden}}">    
+                <a class="general-bar-links" href="" ng-click="openDisplaySampleProfileModal()">
+                    <i class='glyphicon glyphicon-eye-open' ></i> &nbsp;&nbsp;&nbsp;Preview&nbsp;&nbsp;&nbsp;
+                    <i class='glyphicon glyphicon-share-alt' ></i>
+                </a>
+              </span>
             </div>
           </div>
           <div class="col-md-1">
@@ -203,7 +211,7 @@
 
                   <li>
                     <div style="padding: 20px;padding-top: 150px;" class="h8">
-                      Information on these <strong class="profile-page-icon-red">7 steps</strong> are very important for the businesses, who wish to contact you.
+                      Information on these <strong class="profile-page-icon-red">7 steps</strong> are very important for the business owners, who wish to contact you.
                     </div> 
                   </li>                                         
                  </ul>
@@ -229,12 +237,12 @@
                               
                   <div style="padding-top: 20px;" class="">
                     <span style="color:#075A6E;" class="h1 icon-find_accountant_landing"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="h8">Businesses, who are looking for accountants can find you easily!</span>
+                    <span class="h8">Business owners, who are looking for accountants can find you easily!</span>
                   </div>    
 
                   <div style="padding-top: 20px;" class="">
                     <span style="color:#075A6E;" class="h1 icon-bubbles"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="h8">Post great articles and answer queries to get even better visibility among businesses.</span> 
+                    <span class="h8">Post great articles and answer queries to build better trust in the community.</span> 
                   </div>
                 </div>             
               </div>

@@ -11,13 +11,13 @@
             <form style="padding-top: 15px;" role="form">
                 <div class="row">                  
                   <div class="col-xs-9 form-group">
-                    <input type="text" class="form-control" placeholder="Educational background." ng-model="accountant.education">
+                    <input popover-title="Educational Background" popover-placement="right" popover-append-to-body='true' popover="Use comma to enter multiple educations. e.g. CA, ICAI" popover-trigger="mouseenter"  type="text" class="form-control" placeholder="Educational background." ng-model="accountant.education">
                   </div>
                 </div>
                 
                 <div class="row">                  
                   <div class="col-xs-9 form-group">
-                    <input type="text" class="form-control" placeholder="Certifications." ng-model="accountant.certifications">
+                    <input popover-title="Certifications" popover-placement="right" popover-append-to-body='true' popover="Enter multiple certifications using comma." popover-trigger="mouseenter"  type="text" class="form-control" placeholder="Certifications." ng-model="accountant.certifications">
                   </div>
                 </div>                  
                  

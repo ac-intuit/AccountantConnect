@@ -12,7 +12,7 @@
                 <div class="row">   
                   <div class="editprofile-form-label col-xs-6">Years of Experience</div>                              
                   <div class="col-xs-3 form-group">
-                    <input type="text" class="input-sm form-control"  ng-model="accountant.yearOfExp">
+                    <input popover-placement="right" popover-append-to-body='true' popover="Round it to the next number. e.g If your exp. is 2 yr 3 months, enter 3." popover-trigger="mouseenter"  type="text" class="input-sm form-control"  ng-model="accountant.yearOfExp">
                   </div>
                 </div>
                 
@@ -26,7 +26,7 @@
                
                 <div ng-repeat="expertise in expertises" class="row">
                    <div class="col-xs-9 form-group">
-                      <input type="text" id="{{expertise.id}}" placeholder="Your Expertise" class="input-sm form-control" value="{{expertise.value}}">
+                      <input type="text" id="{{expertise.id}}" placeholder="Your Expertise" class="input-sm form-control" ng-model="expertise.value">
                    </div>
                 </div> 
                                                             

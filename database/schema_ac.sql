@@ -22,6 +22,7 @@ CREATE TABLE accountant (
   shortdescription text,
   longdescription text,
   
+  websiteurl text,
   linkedinprofile text,
   fbprofile text,
   gplusprofile text,

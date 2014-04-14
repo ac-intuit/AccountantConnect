@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="AccountantProfileSection">
+<html ng-app="AccountantConnect">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,6 +43,7 @@
     <script src="../js/ac-util.js"></script>
     <script src="../js/ac-signup.js"></script>
     
+    
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -52,12 +53,6 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
 
-<style>
-
-.popover{
-    background-color: #F0F0F0;
-}
-</style>
       <script>
 
         $(document).ready(function() {  
@@ -69,6 +64,54 @@
  }else{
      trackUserActivity(feature);
  }
+
+ $("#landingpageJoinAccountantConnectButton").click(function() {
+     trackUserActivity("clickButton_joinNetworkLandingPageButton_acmainhtml")
+     $("#accountant_email").focus();      
+ });
+ $("#accountant_email").focus(function(){
+    $("#infoEmailTextMsg").show();
+});
+ $("#accountant_name").focus(function(){
+    $("#infoNameTextMsg").show();
+});
+ $("#accountant_email").blur(function(){
+    $("#infoEmailTextMsg").hide();
+});
+ $("#accountant_name").blur(function(){
+    $("#infoNameTextMsg").hide();
+});
+
+    // ============ Click of Register >> button ==========
+    $("#accountantRegistrationButton").click(function() {
+
+        trackUserActivity("clickButton_registerAccountant_acmainhtml");
+        if(!validateFieldsOnSignUpForm()){
+         return false;
+     }
+
+     $("#accountantRegistrationButton").addClass("disabled");
+
+        //$("#pleaseWaitButton").show();
+        accountantName = $("#accountant_name").val();
+        accountantEmail = $("#accountant_email").val();
+        $.post("../api/accountant/createAccountantWithMinParams",
+        {
+            accountant_name:accountantName,
+            accountant_email:accountantEmail 
+        },
+        function(data, status) {
+            if(status == "success" && data.success == true){
+                $("#accountantAdditionSuccessDiv").show();
+                $("#accountantAdditionErrorDiv").hide();
+            }else{
+                $("#accountantAdditionSuccessDiv").hide();
+                $("#accountantAdditionErrorDiv").show();
+            }
+            $("#accountantRegistrationButton").removeClass("disabled");;
+        });
+    });
+    // ============ END: Click of Register >> button ==========
 });
 </script>
 
@@ -140,7 +183,7 @@
           <div class="col-md-3">
           </div>
           <div class="col-md-6">
-            <div class="subnav-text">This profile is not public yet.</div>
+            <div class="subnav-text">This is a sample profile for reference.</div>
           </div>
           <div class="col-md-2">
           </div>
@@ -171,19 +214,17 @@
                  <div class="row">
                     <div class="col-md-6">
                         <div style="padding:20px;">                 
-                           <div style="border-bottom:1px solid #e2e2e2;" class="h2">{{accountant.firstName}} {{accountant.lastName}}</div>
-                            <div style="color:#000;padding-top:6px;" class="h6">{{accountant.shortDescription}}</div>
+                           <div style="border-bottom:1px solid #e2e2e2;" class="h2">Suresh Patil</div>
+                            <div style="color:#000;padding-top:6px;" class="h6">CA, Consultant for Indirect Taxes</div>
                             <div style="padding:20px;" class="h8">
-                              {{accountant.longDescription}}                        
+                              Suresh has 5+ years of experience in advising clients on Indian Tax compliance. He is a practising CA and has contributed many articles to the 
+                              online and offline journals. He also works with clients on the areas like getting various licenses and permits, auditing and tax filing.                       
                             </div>
                         </div>
                     </div>
                     <div id="profile-header-photo" class="col-md-3">
-                       <div style="padding-top:20px;" class="profile-header-photo">                           
-                         <img id="photoImgSrc" src="{{accountant.photoFileName}}" class="{{accountant.actualImgDisplay}} general-clip-image img-thumbnail">
-                          <div id="dummyImg" class="{{accountant.dummyImgDisplay}}" style="background-color:#eee;height: 150px;width: 150px;border: 1px solid #CDCDCD;">
-                              <i style="margin-top:60px;margin-left:60px;font-size: 25px;color:#535252" class='center-block glyphicon glyphicon-camera' ></i>
-                          </div>
+                       <div style="padding-top:20px;" class="profile-header-photo">
+                            <img class="general-clip-image" src="../img/accountant1.jpg" >
                        </div>
                     </div>
                 </div>
@@ -202,9 +243,11 @@
 
                  <div class="row">
                     <div style="padding-left: 30px;" class="col-md-6">
-                        <i style="color:#11858A;font-size: 14px;" class='glyphicon glyphicon-envelope' ></i>&nbsp;&nbsp;<span class="h8">{{accountant.email}}</span><br>
-                        <span style="color:#11858A;font-size: 16px;" class="icon-location"></span>&nbsp;&nbsp;<span class="h8">{{accountant.area}}</span>&nbsp;&nbsp;                        
-                        <i style="color:#11858A;font-size: 14px;" class='glyphicon glyphicon-globe' ></i>&nbsp;&nbsp;<span class="h8">{{accountant.websiteURL}}</span>                        
+                         <i style="color:#11858A;font-size: 14px;" class='glyphicon glyphicon-envelope' ></i>&nbsp;&nbsp;<span class="h8">suresh.venkatraman@gmail.com</span><br>
+                        <i style="color:#11858A;font-size: 14px;" class='glyphicon glyphicon-globe' ></i>&nbsp;&nbsp;<span class="h8">www.sureshvenkatraman.info</span>
+                        <span style="color:#11858A;font-size: 14px;padding-left: 5px;" class="icon-location"></span>&nbsp;&nbsp;<span class="h8">Electronic city area, Bangalore</span>
+                        &nbsp;&nbsp;
+
                     </div>                   
                  </div>
               </div> 
@@ -224,9 +267,14 @@
             <span class="h7"><i style="color:#11858A" class='glyphicon glyphicon-briefcase' ></i></span>&nbsp;&nbsp;&nbsp;<span class="profile-page-headers h7">AREA OF EXPERTISE</span>
           </div>
           <div style="padding-top:20px;padding-left:30px;" class="col-md-4">
-             <div ng-repeat="expertise in expertises">
-                <span style="color:#11858A">-&nbsp;&nbsp;</span><span class="h8">{{expertise.value}}</span><br>
-             </div>  
+              <span style="color:#11858A">-&nbsp;&nbsp;</span><span class="h8">Tax Consultant</span><br>
+              <span style="color:#11858A">-&nbsp;&nbsp;</span><span class="h8">Company Laws</span><br>
+              <span style="color:#11858A">-&nbsp;&nbsp;</span><span class="h8">Business licenses</span><br>
+              <span style="color:#11858A">-&nbsp;&nbsp;</span><span class="h8">Audit</span>
+          </div>
+          <div style="padding-top:20px;padding-left:30px;" class="col-md-4">
+             <span style="color:#11858A">-&nbsp;&nbsp;</span><span class="h8">Company Law</span><br>
+             <span style="color:#11858A">-&nbsp;&nbsp;</span><span class="h8">Statutory Compliance</span>
           </div>
 
        </div>
@@ -234,20 +282,23 @@
        <!-- ================= END: Area of Expertize Div Row ================= -->
 
        <!-- ================= START: Education and Experience ================ -->
-      <div id="profile_contact" style="border-bottom: 1px solid #DCDCDC;padding-bottom:20px;padding-top: 10px;" class="row">          
-          <div style="padding-top: 10px;padding-left: 30px;">
-              <span class="h7"><i style="color:#11858A" class='glyphicon glyphicon-paperclip' ></i></span>&nbsp;&nbsp;&nbsp;<span class="profile-page-headers h7">EXPERIENCE</span>&nbsp;&nbsp;
-              <span class="h8">{{accountant.yearsOfExp}} years of Experience</span>
-          </div>
-          
+      <div id="profile_contact" style="border-bottom: 1px solid #DCDCDC;padding-bottom:20px;padding-top: 10px;" class="row">
           <div style="padding-top: 10px;padding-left: 30px;">
               <span class="h7"><i style="color:#11858A" class='glyphicon glyphicon-book' ></i></span>&nbsp;&nbsp;&nbsp;<span class="profile-page-headers h7">EDUCATION</span>&nbsp;&nbsp;
-              <span class="h8">{{accountant.education}}</span>
+              <span class="h8">CA, CFA institute US</span>
+          </div>
+          <div style="padding-top: 10px;padding-left: 30px;">
+              <span class="h7"><i style="color:#11858A" class='glyphicon glyphicon-paperclip' ></i></span>&nbsp;&nbsp;&nbsp;<span class="profile-page-headers h7">EXPERIENCE</span>&nbsp;&nbsp;
+              <span class="h8">5+ years of Experience</span>
+          </div>
+
+          <div style="padding-top: 10px;padding-left: 30px;">
+              <span class="profile-page-icons h7 icon-user"></span>&nbsp;&nbsp;&nbsp;<span class="profile-page-headers h7">PAST CLIENTS</span>&nbsp;&nbsp;
+              <span class="h8">Apple pharmaceuticals, Froogle Consultancy &amp; Real estates, Dashbook Manufacturing</span>
           </div>
           
           <div style="padding-top: 10px;padding-left: 30px;">
               <span class="h7"><i style="color:#11858A" class='glyphicon glyphicon-bookmark' ></i></span>&nbsp;&nbsp;&nbsp;<span class="profile-page-headers h7">CERTIFICATIONS</span>&nbsp;&nbsp;
-              <span class="h8">{{accountant.certifications}}</span>
           </div>
 
        </div>
@@ -272,8 +323,8 @@
           </div>
            <div class="col-md-5">              
                <div style="padding-top:20px;padding-left:30px;">                    
-                    <span style="font-weight: bold;padding-bottom: 40px;" class="h8">{{accountant.addressLine1}},</span><br>
-                    <span class="h8">{{accountant.addressLine2}},{{accountant.city}}, {{accountant.state}}, Pincode-{{accountant.pincode}}</span><br>                   
+                    <span style="font-weight: bold;padding-bottom: 40px;" class="h8">Suresh Venkatraman Consulting,</span><br>
+                    <span class="h8">#02-D16, Saranya Business district,MG Road Business District,Bangalore, Karnataka-560100</span><br>                   
                 </div>
            </div>
            <div class="col-md-5">
@@ -322,8 +373,30 @@
 
            <!--============ START: User Review Divs ============ -->
            <div style="width: inherit;" class="container">
-
-
+              <div style="padding-top: 10px;padding-bottom: 10px;width: 80%" class="row">
+                  <div style="padding-bottom: 10px;" class="user-review-reviewer-detail h8">Karthik Kulkarni, <span style="color: #130961;font-size: 13px;">Current Client, Froogle Consultancy &amp; Real estates </span>
+                  <div style="font-size: 12px;color:#0A166F">09-Jan-2014</div></div>
+                  <div class="h9">
+                      I had worked with Suresh in the past when I was new to the construction business and had a great working relationship with him. He is absolutely commited to his deliverables and helped us find out many important ways to save taxes for us.
+                  </div>
+                  <div style="padding-top: 10px;">
+                    <button style="background-color: #E2723E;border-color:#E2723E; font-size: 10px;" class="btn-xs btn btn-default">
+                      <span style="font-size: 13px;" class="icon-thumbs-up"></span>&nbsp;&nbsp;Useful
+                    </button>
+                  </div>
+              </div>
+              <div style="padding-top: 40px;padding-bottom: 10px;width: 80%;" class="row">
+                  <div style="padding-bottom: 10px;" class="user-review-reviewer-detail h8">Subramanyam R, <span style="color: #130961;font-size: 13px;">Past Client, ABC Infrastructure Services</span>
+                  <div style="font-size: 12px;color:#0A166F;">13-Mar-2014</div> </div>
+                  <div class="h9">
+                      I had worked with Suresh in the past when I was new to the construction business and had a great working relationship with him. He is absolutely commited to his deliverables and helped us find out many important ways to save taxes for us.
+                  </div>
+                  <div style="padding-top: 10px;">
+                    <button style="background-color: #E2723E;border-color:#E2723E; font-size: 10px;" class="btn btn-default btn-xs">
+                      <span style="font-size: 13px;" class="icon-thumbs-up"></span>&nbsp;&nbsp;Useful
+                    </button>
+                  </div>
+              </div>
             </div>
 
            <!--============ START: User Review Divs ============ -->
@@ -338,7 +411,7 @@
             <div style="padding:20px;"  id="profile-header">
               <div style="padding-bottom: 10px;" class="Montserrat-h9">Like the profile? <br>
               <span class="h9">Get in touch with the accountant!</span></div>
-              <a class="uppercase btn-default btn" ng-click="openDisplayContactModalDialog()" popover-placement="right" popover-append-to-body='true' popover="Click to view the contact details for the accountant. No need to register." popover-trigger="mouseenter" >
+              <a class="uppercase btn-default btn" popover-placement="right" popover-append-to-body='true' popover="Click to view the contact details for the accountant. No need to register." popover-trigger="mouseenter" >
                   <span style="font-size: 16px;" class="icon-phone"></span>&nbsp;&nbsp;<span style="font-size: 16px;">Contact</span>
                 </a><br><br><br>
 

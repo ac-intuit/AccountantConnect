@@ -6,6 +6,8 @@ public class ProfileCompletionStatus {
 	private boolean isDescriptionSectionFilled = true;
 	private boolean isExperienceSectionFilled = true;
 	private boolean isContactSectionFilled = true;
+	//any one of the above false, meaning this one must be false;
+	private boolean isAllMandatorySectionsFilled = true;
 
 	public ProfileCompletionStatus(Accountant accountant){
 		fillCompletionStatus(accountant);
@@ -20,20 +22,24 @@ public class ProfileCompletionStatus {
 				|| accountant.getCity() == null || "".equals(accountant.getCity().trim())
 				|| accountant.getArea() == null || "".equals(accountant.getArea().trim())){
 			isBasicInfoSectionFilled = false;
+			isAllMandatorySectionsFilled = false;
 		}
 		
 		if(accountant.getPhotoFileName() == null || "".equals(accountant.getPhotoFileName().trim())){
 			isPhotoUploaded = false;
+			isAllMandatorySectionsFilled = false;			
 		}
 		
 		if(accountant.getShortDescription() == null || "".equals(accountant.getShortDescription().trim())
 				|| accountant.getLongDescription() == null || "".equals(accountant.getLongDescription().trim())){
 			isDescriptionSectionFilled = false;
+			isAllMandatorySectionsFilled = false;			
 		}
 		
 		if(accountant.getYearOfExp() == null || "".equals(accountant.getYearOfExp())
 				|| accountant.getAreasOfExpertise() == null || "".equals(accountant.getAreasOfExpertise().trim())){
 			isExperienceSectionFilled = false;
+			isAllMandatorySectionsFilled = false;			
 		}
 		if(accountant.getAddressLine1() == null || "".equals(accountant.getAddressLine1().trim())
 				|| accountant.getAddressLine2() == null || "".equals(accountant.getAddressLine2().trim())
@@ -41,8 +47,8 @@ public class ProfileCompletionStatus {
 				|| accountant.getState() == null || "".equals(accountant.getState().trim())
 				|| accountant.getPincode() == null || "".equals(accountant.getPincode())){
 			isContactSectionFilled = false;
+			isAllMandatorySectionsFilled = false;			
 		}
-		
 	}
 	
 	public boolean isBasicInfoSectionFilled() {
@@ -74,5 +80,13 @@ public class ProfileCompletionStatus {
 	}
 	public void setContactSectionFilled(boolean isContactSectionFilled) {
 		this.isContactSectionFilled = isContactSectionFilled;
+	}
+
+	public boolean isAllMandatorySectionsFilled() {
+		return isAllMandatorySectionsFilled;
+	}
+
+	public void setAllMandatorySectionsFilled(boolean isAllMandatorySectionsFilled) {
+		this.isAllMandatorySectionsFilled = isAllMandatorySectionsFilled;
 	}
 }

@@ -7,9 +7,18 @@
         <div class="col-md-8">
             
             <form style="padding-top: 15px;" role="form">
+              <div class="row">                  
+                  <div class="col-xs-9 form-group">
+                    <input popover-title="Your website URL" popover-placement="right" popover-append-to-body='true' popover="Fill this if you have a website." popover-trigger="mouseenter" type="text" class="form-control" placeholder="Your website URL" ng-model="accountant.websiteURL">
+                  </div>
+                  <div class="col-xs-1 form-group">
+                    <i style="font-size: 25px;color:#535252"  class="glyphicon glyphicon-globe"></i>&nbsp;                    
+                  </div>  
+                </div>
+                
                 <div class="row">                  
                   <div class="col-xs-9 form-group">
-                    <input type="text" class="form-control" placeholder="LinkedIn Profile" ng-model="accountant.linkedinProfile">
+                    <input popover-placement="right" popover-append-to-body='true' popover="Enter your LinkedIn profile URL" popover-trigger="mouseenter" type="text" class="form-control" placeholder="LinkedIn Profile" ng-model="accountant.linkedinProfile">
                   </div>
                   <div class="col-xs-1 form-group">
                     <span style="font-size: 25px;color:#535252"  class="icon-linkedin"></span>&nbsp;                    
@@ -18,7 +27,7 @@
 
                 <div class="row">
                   <div class="col-xs-9 form-group">
-                    <input type="text" class="form-control" placeholder="Facebook Profile" ng-model="accountant.fbProfile">
+                    <input popover-placement="right" popover-append-to-body='true' popover="Enter your facebook profile URL" popover-trigger="mouseenter" type="text" class="form-control" placeholder="Facebook Profile" ng-model="accountant.fbProfile">
                   </div>                  
                   <div class="col-xs-1 form-group">
                     <span style="font-size: 25px;color:#535252"  class="icon-facebook"></span>&nbsp;                    

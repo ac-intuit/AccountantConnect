@@ -9,13 +9,13 @@
             <form style="padding-top: 15px;" role="form">
                 <div class="row">
                   <div class="col-xs-9 form-group">
-                    <input type="text" class="form-control" placeholder="Short Professional description." ng-model="accountant.shortDescription">
+                    <input  popover-placement="right" popover-title="Short Professional Description" popover-append-to-body='true' popover="e.g. Indirect Tax consultant with 5 years experience.&nbsp;Be as brief as possible" popover-trigger="mouseenter" type="text" class="form-control" placeholder="Short Professional description." ng-model="accountant.shortDescription">
                   </div>
                 </div>  
                 
                 <div class="row">
                   <div class="col-xs-9 form-group">
-                    <textarea style="width:100%" class="form-control" rows="4" placeholder="Long description. Please keep it within 60 words." ng-model="accountant.longDescription"></textarea>
+                    <textarea popover-placement="right" popover-title="Long professional description" popover-append-to-body='true' popover="e.g. Suresh has 5+ years of experience in advising clients on Indian Tax compliance. He is a practising CA and has contributed.." popover-trigger="mouseenter" style="width:100%" class="form-control" rows="4" placeholder="Long description. Please keep it within 60 words." ng-model="accountant.longDescription"></textarea>
                   </div>
                 </div>            
                  

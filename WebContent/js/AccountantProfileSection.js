@@ -27,6 +27,8 @@ function AccountantController($scope, $http, $location, $rootScope, $modal) {
 	$scope.expertises = [{id: 'expertise1',value: ''}, {id: 'expertise2',value: ''}, {id: 'expertise3',value: ''}];
 	$scope.accountant.actualImgDisplay = "hidden";
 	$scope.accountant.dummyImgDisplay = "";
+	$scope.accountant.PreviewLinkHidden = "hidden";
+	$scope.accountant.SampleLinkHidden = "";
 	
     $scope.getAccountant = function() {
         $http({method: 'GET', url: '../api/accountant/profile'}).
@@ -53,11 +55,21 @@ function AccountantController($scope, $http, $location, $rootScope, $modal) {
 	              		    $scope.expertises.push({'id':'expertise' + id,'value': val});
 	                	}
 	                }
-	                //If FTU, open the FTU modal dialog
-	                if($scope.accountant.noOfVisitToEditProfilepage == 0)
+	                //If FTU, open the FTU modal dialog - editprofile page
+	                if($scope.accountant.noOfVisitToEditProfilepage == 1)
 	                   $scope.openFTUModalDialog($modal);
 	                
-	              //TODO: Need to create a function
+	                //Show preview only if all the necessary sections are filled.
+	                //Else show the sample page
+	                if($scope.accountant.profileCompletionStatus.allMandatorySectionsFilled ==  true){
+	                	$scope.accountant.PreviewLinkHidden = "";
+	                	$scope.accountant.SampleLinkHidden = "hidden";
+	                }else{
+	                	$scope.accountant.PreviewLinkHidden = "hidden";
+	                	$scope.accountant.SampleLinkHidden = "";
+	                }
+	                
+	                //TODO: Need to create a function
 	                //Change the + plus sign to green tick
 	                if($scope.accountant.profileCompletionStatus.basicInfoSectionFilled == true){
 	                	editProfileLeftNavs_intro[0].IsItemFilled = "glyphicon-ok";
@@ -105,9 +117,9 @@ function AccountantController($scope, $http, $location, $rootScope, $modal) {
         	//Add all the expertises and make a string.
         	var expertiseString = "";
         	var expertiseCount = 0;
-        	for(var i = 1; i < $scope.expertises.length+1; i++){
-        		var expertiseVal = $('#expertise'+i).val();
-        		if(expertiseVal != ""){
+        	for(var i = 0; i < $scope.expertises.length; i++){
+        		var expertiseVal = $scope.expertises[i].value;
+        		if(expertiseVal != "" && expertiseVal != null  && expertiseVal != undefined){
         			if(expertiseCount != 0){
         				expertiseString += '|';
         			}
@@ -193,6 +205,39 @@ function AccountantController($scope, $http, $location, $rootScope, $modal) {
 		    }, function () {
 		    });
 	 };
+	 
+	  $scope.openDisplayContactModalDialog = function () {
+		    var modalInstance = $modal.open({
+		      templateUrl: '../ac/modals/displaycontactmodal.html',
+		      controller: ModalInstanceCtrl,
+		      resolve: {
+		    	  accountant: function () {
+		              return $scope.accountant;
+		            }
+		      }
+		    });
+
+		    modalInstance.result.then(function () {
+		    }, function () {
+		    });
+	 };
+	 
+	 $scope.openDisplaySampleProfileModal = function () {
+		    var modalInstance = $modal.open({
+			      templateUrl: '../ac/modals/displaysampleprofilemodal.html',
+			      controller: ModalInstanceCtrl,
+			      resolve: {
+			    	  accountant: function () {
+			              return $scope.accountant;
+			            }
+			      }
+			    });
+
+			    modalInstance.result.then(function () {
+			    }, function () {
+			    });
+		 };
+	 
 	 var ModalInstanceCtrl = function ($scope, $modalInstance) {
 			$scope.ok = function () {
 				$modalInstance.close();
@@ -200,7 +245,8 @@ function AccountantController($scope, $http, $location, $rootScope, $modal) {
 	  };
 	  
 	  //City list for typeahead
-	  $scope.states = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Kolkata', 'Pune', 'Chandigarh', 'Ahmedabad', 'Amritsar', 'Bhubaneswar', 'Bhopal', 'Coimbatore', 'Ernakulum', 'Goa', 'Guntur', 'Haldwani', 'Indore', 'Jaipur', 'Jalandhar', 'Kakinada', 'Kanpur', 'Kota', 'Lucknow', 'Ludhiana', 'Mysore', 'Nagpur', 'Patiala', 'Patna', 'Rajamundry', 'Salem', 'Surat', 'Thiruvanthapuram', 'Tirrupur', 'Udaipur', 'Ujjain', 'Vadodara', 'Vijayawada', 'Vizag', 'Others'];
+	  $scope.cities = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Hyderabad', 'Kolkata', 'Pune', 'Chandigarh', 'Ahmedabad', 'Amritsar', 'Bhubaneswar', 'Bhopal', 'Coimbatore', 'Ernakulum', 'Goa', 'Guntur', 'Haldwani', 'Indore', 'Jaipur', 'Jalandhar', 'Kakinada', 'Kanpur', 'Kota', 'Lucknow', 'Ludhiana', 'Mysore', 'Nagpur', 'Patiala', 'Patna', 'Rajamundry', 'Salem', 'Surat', 'Thiruvanthapuram', 'Tirrupur', 'Udaipur', 'Ujjain', 'Vadodara', 'Vijayawada', 'Vizag', 'Others'];
+	  $scope.states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam','Telengana', 'Bihar', 'Chandigarh', 'Chhattisgarh', 'Delhi', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jammu and Kashmir', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Orissa', 'Puducherry', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'];
 	  
 	  //Sidebar
 	  //Create left nav of the edit profile
@@ -308,8 +354,33 @@ function PartialProfileViewController($scope, $http, $templateCache){
  */
 
 function PhotoController($scope, $http, $templateCache){
-	$scope.actualImgDisplay = "hidden";
-	$scope.dummyImgDisplay = "";
+      
+	 $scope.getPhotoLocation = function() {
+	        $http({method: 'GET', url: '../api/accountant/getPhotoLocation'}).
+	            success(function(data, status, headers, config) {
+	            	if(data.code == 1){
+		                $scope.accountant.photoFileName = data.data;
+		                //If photo is uploaded, unhide the section.
+		                if($scope.accountant.photoFileName != "null" && $scope.accountant.photoFileName != null){
+		                	$scope.accountant.actualImgDisplay = "";
+		                	$scope.accountant.dummyImgDisplay = "hidden";
+		                }else{
+		                	$scope.accountant.actualImgDisplay = "hidden";
+		                	$scope.accountant.dummyImgDisplay = "";
+		                }		      
+		            }
+	            	//Need to login
+	            	else if(data.code == 2){
+	            		window.location.href = "signin.html";
+		            }else{
+		            	$scope.errorMessageFromServer = data.description;
+		            }
+	            }).
+	            error(function(data, status, headers, config) {
+	                $scope.apps = data || "Request failed";
+	            });
+	  };
+	  $scope.getPhotoLocation();
 	
 	/**
 	 * To handle image upload
@@ -376,7 +447,7 @@ function EditProfileSideBarController($scope) {
 function CityTypeaheadCtrl($scope) {
 
 	  $scope.selected = undefined;
-	  $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+	  $scope.cities = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 	  // Any function returning a promise object can be used to load values asynchronously
 }
 

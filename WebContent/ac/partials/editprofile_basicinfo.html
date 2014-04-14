@@ -21,35 +21,35 @@
 		         
 		         <div class="row">
 		            <div class="col-xs-9 form-group">
-		               <input type="text" class="form-control" placeholder="Email" ng-model="accountant.email">
+		               <input type="text" class="form-control" placeholder="Email" ng-model="accountant.email" readonly>
 		            </div>
 		            <div class="help-block">You can change Your email.</div>
 		         </div>
 		
 		         <div class="row">
 		             <div class="col-xs-9 form-group">
-		                 <input type="text" class="form-control" placeholder="Mobile" ng-model="accountant.mobile">
+		                 <input popover-title="Mobile Number" popover-placement="right" popover-append-to-body='true' popover="This is mandatory as we may send you alerts on this number. This won't be visible to the businesses" popover-trigger="mouseenter" type="text" class="form-control" placeholder="Mobile" ng-model="accountant.mobile">
 		             </div>
 		             <div class="help-block">Businesses will contact you on this number.</div>                
 		         </div> 
 		         
 		         <div class="row">
                     <div class="col-xs-9 form-group">
-                        <input type="text" class="form-control" placeholder="Business Phone" ng-model="accountant.businessPhone">
+                        <input popover-title="Business Phone" popover-placement="right" popover-append-to-body='true' popover="Prospective clients might contact you on this number. Can be same as mobile number." popover-trigger="mouseenter" type="text" class="form-control" placeholder="Business Phone" ng-model="accountant.businessPhone">
                     </div>
                     <div class="help-block">Start typing to find.</div>
                  </div>
 		         
 		         <div class="row">
                     <div class="col-xs-9 form-group">
-                        <input type="text" class="form-control" placeholder="City" ng-model="accountant.city" typeahead="state for state in states | filter:$viewValue | limitTo:8">
+                        <input  popover-placement="right" popover-append-to-body='true' popover="Start typing to see suggestions. If your city not found, please choose others" popover-trigger="mouseenter" type="text" class="form-control" placeholder="City" ng-model="accountant.city" typeahead="city for city in cities | filter:$viewValue | limitTo:8">
                     </div>
                     <div class="help-block">Start typing to find.</div>
                  </div>  
 		         
 		         <div class="row">
 		             <div class="col-xs-9 form-group">
-		                 <input type="text" class="form-control" placeholder="Area" ng-model="accountant.area">
+		                 <input popover-title="Your area in the city" popover-placement="right" popover-append-to-body='true' popover="e.g. Electronic city, Bangalore. This will help the businesses, who are looking for accountants near their location." popover-trigger="mouseenter" type="text" class="form-control" placeholder="Area" ng-model="accountant.area">
 		             </div>
 		             <div class="help-block">e.g. Electronic City</div>
 		         </div>	         

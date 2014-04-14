@@ -35,7 +35,18 @@ public class EditAccountantService {
 		return doesTheEmailExist;		
 	}
 		
-	
+	/**
+	 * This method is called first to create an accountant in the system.
+	 * This must be entry point.
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param phone
+	 * @param isHidden
+	 * @param password
+	 * @return
+	 */
 	@Transactional
 	public AppResponse<Integer> createAccountantWithMinimumParams(
 			String firstName,
@@ -61,6 +72,8 @@ public class EditAccountantService {
 		accountant.setIsProfileCreated(0);
 		accountant.setIsHidden(isHidden);
 		accountant.setPassword(password);
+		
+		accountant.setNoOfVisitToEditProfilepage(0);
 	
 		Integer accountantId = -1;
 		try {
@@ -74,47 +87,6 @@ public class EditAccountantService {
 		}
 
 		return response;
-	}
-	
-	@Transactional
-	public AppResponse<Accountant> saveProfileWithBasicInfo(
-			Integer id,
-			String firstName,
-			String lastName,			
-			String email,
-			String mobile,
-			String businessPhone,
-			String city,
-			String area){
-		Accountant accountant = null;
-		AppResponse<Accountant> appResponse = new AppResponse<Accountant>();
-		appResponse.setCode(EventStatus.failure.getValue());
-		try {
-			accountant	= (Accountant)accountantDao.readById(id);
-		} catch (CommonException e) {
-			e.printStackTrace();
-		}
-					
-		accountant.setFirstName(firstName);
-		accountant.setLastName(lastName);
-		accountant.setEmail(email);
-		accountant.setMobile(mobile);
-		accountant.setBusinessPhone(businessPhone);
-		accountant.setCity(city);
-		accountant.setArea(area);
-		
-		try {
-			accountantDao.update(accountant);
-			appResponse.setCode(EventStatus.success.getValue());
-			appResponse.setData(accountant);
-			appResponse.setDescription(MessageCollection.PROFILE_SUCCESSFULLY_UPDATED);
-		} catch (CommonException e) {
-			e.printStackTrace();
-			appResponse.setDescription(MessageCollection.INTERNAL_ERROR_WHILE_ADDING_ACCOUNTANT);
-			return appResponse;
-		}		
-		
-		return appResponse;
 	}
 	
 	/**
@@ -142,6 +114,7 @@ public class EditAccountantService {
 			String shortDescription,
 			String longDescription,
 			
+			String websiteURL,
 			String linkedinProfile,
 			String fbProfile,
 			String gplusProfile,
@@ -156,9 +129,7 @@ public class EditAccountantService {
 			String addressLine2,
 			String state,
 			Integer pincode,
-			String country,
-			
-			Integer noOfVisitToEditProfilepage){		
+			String country){		
 		Accountant accountant = null;
 		//Prepare the response
 		AppResponse<ProfileCompletionStatus> appResponse = new AppResponse<ProfileCompletionStatus>();
@@ -194,6 +165,7 @@ public class EditAccountantService {
 		accountant.setShortDescription(shortDescription);
 		accountant.setLongDescription(longDescription);
 		
+		accountant.setWebsiteURL(websiteURL);
 		accountant.setLinkedinProfile(linkedinProfile);
 		accountant.setFbProfile(fbProfile);
 		accountant.setGplusProfile(gplusProfile);
@@ -236,17 +208,17 @@ public class EditAccountantService {
 		appResponse.setCode(EventStatus.failure.getValue());
 		try {
 			accountant	= (Accountant)accountantDao.readById(id);
+			//TODO: increase the editprofile page access count for this accoutant.
+			//I am assuming this call has come from the editprofile page. 
+			//This is completely wrong. But I still am doing this because giving something to the customers is more
+			//important to me than getting it 100% right! For the sake of time.
+			accountant.setNoOfVisitToEditProfilepage(accountant.getNoOfVisitToEditProfilepage() + 1);
 			//Set the section fill information
 			ProfileCompletionStatus profileCompletionStatus = new ProfileCompletionStatus(accountant);
 			accountant.setProfileCompletionStatus(profileCompletionStatus);
 			
 			appResponse.setCode(EventStatus.success.getValue());
 			appResponse.setData(accountant);
-			//TODO: increase the editprofile page access count for this accoutant.
-			//I am assuming this call has come from the editprofile page. 
-			//This is completely wrong. But I still am doing this because giving something to the customers is more
-			//important to me than getting it 100% right! For the sake of time.
-			accountant.setNoOfVisitToEditProfilepage(accountant.getNoOfVisitToEditProfilepage());
 			accountantDao.update(accountant);
 		} catch (CommonException e) {
 			e.printStackTrace();
@@ -288,6 +260,24 @@ public class EditAccountantService {
 		}		
 		
 		return appResponse;
+	}
+	
+	@Transactional
+	public AppResponse<String> getPhotoLocation(Integer id){
+		Accountant accountant = null;
+		AppResponse<String> appResponse = new AppResponse<String>();
+		appResponse.setCode(EventStatus.failure.getValue());
+		try {
+			accountant	= (Accountant)accountantDao.readById(id);
+			if(accountant != null){
+				appResponse.setCode(EventStatus.success.getValue());
+				appResponse.setData(accountant.getPhotoFileName());
+			}
+		} catch (CommonException e) {
+			e.printStackTrace();
+			appResponse.setDescription(MessageCollection.INTERNAL_ERROR);
+		}
+    	return appResponse;
 	}
 	
 	/**

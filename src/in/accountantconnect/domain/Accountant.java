@@ -71,6 +71,9 @@ public class Accountant {
 	private String longDescription;
 	
 	@Column
+	private String websiteURL;
+	
+	@Column
 	private String linkedinProfile;
 	
 	@Column
@@ -359,6 +362,14 @@ public class Accountant {
 
 	public void setNoOfVisitToEditProfilepage(Integer noOfVisitToProfilepage) {
 		this.noOfVisitToEditProfilepage = noOfVisitToProfilepage;
+	}
+
+	public String getWebsiteURL() {
+		return websiteURL;
+	}
+
+	public void setWebsiteURL(String websiteURL) {
+		this.websiteURL = websiteURL;
 	}	
 	
 }

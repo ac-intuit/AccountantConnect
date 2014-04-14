@@ -24,8 +24,15 @@ public class CollectionOfUtilityMethods {
 			firstnameAndLastnameArr[0] = firstName; 
 			firstnameAndLastnameArr[1] = "";
 			return firstnameAndLastnameArr;
+		}else if(firstnameAndLastnameArr.length > 2){
+		    String firstName = firstnameAndLastnameArr[0];
+		    String lastName = firstnameAndLastnameArr[2];
+		    
+		    firstnameAndLastnameArr = new String[2];
+			firstnameAndLastnameArr[0] = firstName; 
+			firstnameAndLastnameArr[1] = lastName;
+			return firstnameAndLastnameArr;
 		}else{
-		
 			firstnameAndLastnameArr = new String[2];
 		    firstnameAndLastnameArr[0] = "";
 		    firstnameAndLastnameArr[1] = "";
